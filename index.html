@@ -1,0 +1,1513 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kissingwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="任何复杂纷乱的问题都有简单朴实的解决方案">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kissingwolf's Blog">
+<meta property="og:url" content="http://blog.kissingwolf.com/index.html">
+<meta property="og:site_name" content="Kissingwolf's Blog">
+<meta property="og:description" content="任何复杂纷乱的问题都有简单朴实的解决方案">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kissingwolf's Blog">
+<meta name="twitter:description" content="任何复杂纷乱的问题都有简单朴实的解决方案">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.kissingwolf.com/"/>
+
+
+
+
+
+  <title> Kissingwolf's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88598932-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kissingwolf's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">任何复杂纷乱的问题都有简单朴实的解决方案</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/25/配置macos-的-etc-bashrc/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/25/配置macos-的-etc-bashrc/" itemprop="url">
+                  配置macos 的/etc/bashrc
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-25T00:26:54+08:00">
+                2016-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/25/配置macos-的-etc-bashrc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/25/配置macos-的-etc-bashrc/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>更新了macos本地的/etc/bashrc，配置了更加醒目的提示符，并且安装了bash-completion，做个备忘。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">kevinzou@KevindeAir ~</div><div class="line"> $ cat /etc/bashrc</div><div class="line">function color_my_prompt &#123;</div><div class="line">    local __user_and_host=&quot;\[\033[01;32m\]\u@\h&quot;</div><div class="line">    local __cur_location=&quot;\[\033[01;34m\]\w&quot;</div><div class="line">    local __git_branch_color=&quot;\[\033[31m\]&quot;</div><div class="line">    #local __git_branch=&quot;\`ruby -e \&quot;print (%x&#123;git branch 2&gt; /dev/null&#125;.grep(/^\*/).first || &apos;&apos;).gsub(/^\* (.+)$/, &apos;(\1) &apos;)\&quot;\`&quot;</div><div class="line">    local __git_branch=&apos;`git branch 2&gt; /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`&apos;</div><div class="line">    local __prompt_tail=&quot;\n \[\033[35m\]$&quot;</div><div class="line">    local __last_color=&quot;\[\033[00m\]&quot;</div><div class="line">    export PS1=&quot;$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color &quot;</div><div class="line">&#125;</div><div class="line">color_my_prompt</div><div class="line"></div><div class="line"></div><div class="line">if [ -f $(brew --prefix)/etc/bash_completion ] ; then</div><div class="line">	. $(brew --prefix)/etc/bash_completion</div><div class="line">fi</div></pre></td></tr></table></figure>
+<p>在git目录中显示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kevinzou@KevindeAir ~/Documents/Github相关/blog.kissingwolf.com (source)</div><div class="line"> $</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/23/我的gitconfig配置文件/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/23/我的gitconfig配置文件/" itemprop="url">
+                  我的gitconfig配置文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-23T01:12:41+08:00">
+                2016-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/23/我的gitconfig配置文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/我的gitconfig配置文件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ cat ~/.gitconfig</div><div class="line">[color]</div><div class="line">    ui = auto</div><div class="line">[http]</div><div class="line">[https]</div><div class="line">[user]</div><div class="line">        name = kissingwolf</div><div class="line">        email = kissingwolf@gmail.com</div><div class="line">[color]</div><div class="line">        ui = auto</div><div class="line">[http]</div><div class="line">        proxy = socks5://127.0.0.1:1080</div><div class="line">[https]</div><div class="line">        proxy = socks5://127.0.0.1:1080</div><div class="line">[merge]</div><div class="line">    tool = vimdiff</div><div class="line">[core]</div><div class="line">        autocrlf = false</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/12/Docker容器术语及概念总结/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/12/Docker容器术语及概念总结/" itemprop="url">
+                  Docker容器术语及概念总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T22:56:32+08:00">
+                2016-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/12/Docker容器术语及概念总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/Docker容器术语及概念总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="镜像和容器"><a href="#镜像和容器" class="headerlink" title="镜像和容器"></a>镜像和容器</h2><ul>
+<li>镜像是指文件系统快照或tar包</li>
+<li>容器是指镜像的运行态</li>
+</ul>
+<h2 id="容器与虚拟机"><a href="#容器与虚拟机" class="headerlink" title="容器与虚拟机"></a>容器与虚拟机</h2><ul>
+<li>虚拟机持有整个操作系统和应用程序的快照</li>
+<li>虚拟机运行着自己的内核</li>
+<li>虚拟机可以运行Linux之外的其它操作系统</li>
+<li>容器只持有应用程序,但是容器中可以运行多个应用程序设置是真个Linux发行版</li>
+<li>容器与宿主机共享内核</li>
+<li>容器目前主要运行Linux,Windows的容器还在开放中,容器中的发行版可以选择,容器中的发行版可以和宿主机不同</li>
+</ul>
+<h2 id="持续集成-持续交付"><a href="#持续集成-持续交付" class="headerlink" title="持续集成/持续交付"></a>持续集成/持续交付</h2><ul>
+<li>在应用程序新代码代码提交或出发更新条件时,系统自动构建新镜像并进行部署</li>
+</ul>
+<h2 id="宿主机管理"><a href="#宿主机管理" class="headerlink" title="宿主机管理"></a>宿主机管理</h2><ul>
+<li>部署一台物理机或虚拟机用以运行Docker容器环境</li>
+</ul>
+<h2 id="编排-编配-Orchestration"><a href="#编排-编配-Orchestration" class="headerlink" title="编排/编配(Orchestration)"></a>编排/编配(Orchestration)</h2><ul>
+<li>编配是个控制器进程,用于决定在那里运行容器,以及如何管理容器间的交互</li>
+</ul>
+<h2 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h2><ul>
+<li>用于决定那个容器在那种资源约束下运行在那个宿主机上</li>
+</ul>
+<h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h2><ul>
+<li>容器通过公开服务给集群,以及查找其他服务并与之通讯的过程</li>
+</ul>
+<h2 id="无状态-有状态服务"><a href="#无状态-有状态服务" class="headerlink" title="无状态/有状态服务"></a>无状态/有状态服务</h2><ul>
+<li><strong>无状态服务</strong>是指该服务运行的实例不会在本地存储需要持久化的数据，并且多个实例对于同一个请求响应的结果是完全一致的。当该服务对一个请求作出响应之后，不会再有任何相关操作。实现<strong>无状态服务</strong>的高可用，只需要同时运行该服务的多个实例，并保证这些实例的负载均衡即可。</li>
+<li><strong>有状态服务</strong>是指该服务的实例可以将一部分数据随时进行备份，并且在创建一个新的有状态服务时，可以通过备份恢复这些数据，以达到数据持久化的目的。同时客户端发送的后续请求依赖于之前相关请求的处理结果。由于单独一项操作可能涉及若干相关请求，有状态服务相对难于管理，只是通过多个实例和负载均衡无法实现高可用。</li>
+<li><strong>无状态服务</strong>就好像是农场中的<strong><em>牲口</em></strong>，你不需要提别关注它们其中的某一个，像放牧一样管理他们。<strong>有状态服务</strong>就好像是宠物医院里的<strong><em>宠物猫</em></strong>，你需要记住它们的名字，细心照顾每一个，并且不能把它们混养。</li>
+</ul>
+<h1 id="容器在企业中业务应用"><a href="#容器在企业中业务应用" class="headerlink" title="容器在企业中业务应用"></a>容器在企业中业务应用</h1><h2 id="企业在实际生产中面对的问题"><a href="#企业在实际生产中面对的问题" class="headerlink" title="企业在实际生产中面对的问题"></a>企业在实际生产中面对的问题</h2><p>随着企业业务的增长和 <strong>微服务化</strong> 的演进，需要迫切解决的问题：</p>
+<ul>
+<li><p><strong>环境隔离</strong> ：在IDG机房租用的机架物理机时代，由于每个业务依赖的系统环境不同，服务器之间很难通用，服务器负载也各不相同；各个业务由于安全性考量又都需要独立管理服务器资源并处理服务器故障，就对业务开发和变更造成较大负担。</p>
+</li>
+<li><p><strong>精细资源隔离</strong> ：如果说 <strong>环境隔离</strong> 还可以使用IaaS虚拟机来完成，精细的资源划分和高效的资源利用就需要用容器而非虚拟机了。服务隔离要求按照服务接口对进程物理隔离，防止由于某个接口而影响整体服务，同时也需要根据不同的接口特性设置不同的进程数、CPU计算资源和内存分配容量，实现更加精细且高利用率的资源管理。</p>
+</li>
+<li><p><strong>资源动态调整</strong> ：企业在部署和调整业务的时候需要服务随之自动适应计算、存储、流量等负载的变化。和虚拟机相比，容器技术更加快捷，在负载高峰期可以更加迅速的增加资源，并保证业务的服务质量；在负载的低峰期可以自动收缩以释放资源给其他服务，以提高集群整体的资源利用率。</p>
+<p>​</p>
+</li>
+</ul>
+<h1 id="容器技术介绍"><a href="#容器技术介绍" class="headerlink" title="容器技术介绍"></a>容器技术介绍</h1><h2 id="使用Docker的多种方式"><a href="#使用Docker的多种方式" class="headerlink" title="使用Docker的多种方式"></a>使用Docker的多种方式</h2><ul>
+<li>使用镜像为基础的部署方式</li>
+<li>安全的在同一台机器上运行多种不同版本的应用</li>
+<li>使用一个工具链方便的迁移系统环境到面向服务的架构</li>
+<li>发挥云端或裸机的水平扩展和弹性扩展能力</li>
+<li>确保开发环境、测试环境和生产环境的一致性</li>
+<li>简化公司统一环境一致性及部署成本</li>
+</ul>
+<h2 id="构建容器环境的流程"><a href="#构建容器环境的流程" class="headerlink" title="构建容器环境的流程"></a>构建容器环境的流程</h2><ol>
+<li>构建并保存镜像快照</li>
+<li>将镜像上传到仓库中</li>
+<li>下载镜像到某台宿主机</li>
+<li>以容器方式运行镜像</li>
+<li>将容器连接到其他服务上</li>
+<li>路由流量到容器中</li>
+<li>将容器日志发送到指定位置</li>
+<li>监控容器运行状态</li>
+</ol>
+<h2 id="典型的Docker栈组件"><a href="#典型的Docker栈组件" class="headerlink" title="典型的Docker栈组件"></a>典型的Docker栈组件</h2><ul>
+<li>构建系统</li>
+<li>镜像仓库系统</li>
+<li>配置管理系统</li>
+<li>部署系统</li>
+<li>编配系统</li>
+<li>日志系统</li>
+<li>监控系统</li>
+</ul>
+<h3 id="构建系统"><a href="#构建系统" class="headerlink" title="构建系统"></a>构建系统</h3><p><strong>构建系统</strong>主要解决的是如何生成镜像文件，目前我们是使用Dockerfile来完成镜像构建生成的。<strong>构建系统</strong>需要生成、保存、管理这些Dockerfile编配文件，同时需要管理Dockerfile编配文件的版本。</p>
+<p>理想状态下的Docker构建系统使用类似Jenkins的<strong>持续集成系统</strong>，在代码提交时自动通过Dockerfile构建镜像。容器镜像构建成功后，<strong>构建系统</strong>将发送镜像提交给<strong>镜像仓库</strong>。</p>
+<h3 id="镜像仓库"><a href="#镜像仓库" class="headerlink" title="镜像仓库"></a>镜像仓库</h3><p><strong>镜像仓库</strong>保存Docker的容器镜像。Docker官方的镜像仓库连接速度慢、安全性不强、稳定性堪忧。企业基本都建立自己的<strong>镜像仓库</strong></p>
+<h3 id="配置管理系统"><a href="#配置管理系统" class="headerlink" title="配置管理系统"></a>配置管理系统</h3><p><strong>配置管理系统</strong>定义容器组成集群的方式，定义宿主机资源分配和加密信息保存方式，定义宿主机网络连接方式和容器虚拟网络构架方式。</p>
+<h3 id="部署系统"><a href="#部署系统" class="headerlink" title="部署系统"></a>部署系统</h3><p><strong>部署系统</strong>负载将容器推送或拉取到特定的宿主机并使其运行起来。</p>
+<ul>
+<li>推送 — <strong>部署系统</strong>或<strong>编配系统</strong>将镜像发送到相关宿主机</li>
+<li>拉取 — 事先或安全有宿主机从仓库下载镜像</li>
+</ul>
+<h3 id="编配系统"><a href="#编配系统" class="headerlink" title="编配系统"></a>编配系统</h3><p><strong>编配系统</strong>通过预先编写的编配规则文件，设置容器的运行位置（宿主机），容器可持有资源容量，容器可访问网络地址及端口，容器挂接存储卷方式及位置，容器公开和发现服务的方式。</p>
+<h3 id="日志系统"><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h3><p><strong>日志系统</strong>负载汇总宿主机及容器的运行日志，可以通过分析日志得到宿主机和容器及容器中的服务运行过程记录。</p>
+<h3 id="监控系统"><a href="#监控系统" class="headerlink" title="监控系统"></a>监控系统</h3><p><strong>监控系统</strong>通过snmp、Agent和<strong>日志系统</strong>提供的信息，通过可视化得方法将宿主机和容器的运行状态、资源使用状态、健康状态呈现出来。</p>
+<h2 id="Docker的企业部署优势"><a href="#Docker的企业部署优势" class="headerlink" title="Docker的企业部署优势"></a>Docker的企业部署优势</h2><ul>
+<li>Docker可以快速生成和销毁容器，提供了零停机时间部署</li>
+<li>Docker为不同的服务版本提供依赖隔离</li>
+<li>Docker支持即时回滚</li>
+</ul>
+<h1 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h1><h2 id="实用先行，安全在后"><a href="#实用先行，安全在后" class="headerlink" title="实用先行，安全在后"></a><strong>实用先行，安全在后</strong></h2><h2 id="威胁模型"><a href="#威胁模型" class="headerlink" title="威胁模型"></a>威胁模型</h2><p>目前<strong>虚拟化</strong>是隔离恶意代码最成熟的技术，而<strong>容器</strong>是隔离延伸的形式，可以作为进一步的层次化保护，进一步减少攻击面。</p>
+<p><strong>容器</strong>从根本上是构建在<strong>命名空间</strong>、<strong>cgroup</strong>以及<strong>权能（capability）</strong>之上的。</p>
+<p>Linux<strong>容器</strong>的核心是一系列的<strong>命名空间</strong>。一个进程<strong>命名空间</strong>隐藏了所有<strong>命名空间</strong>之外的进程，给用户分配了一组新的进程ID，包括新的init（pid=1）。一个网络<strong>命名空间</strong>隐藏了系统的网络接口，并以新的集合取代原有接口。如果一个项目没有可以引用的名字，就不能与其进行交互，同时生成了隔离。</p>
+<h2 id="内核更新"><a href="#内核更新" class="headerlink" title="内核更新"></a>内核更新</h2><p>最直接、基本和有效的方法是及时有效的更新内核和系统补丁。目前除了Oracle和RedHat外没有行之有效的在线更新内核方案，这就意味着更新内核需要重启容器的宿主机，也就会重启宿主机上的所有容器。</p>
+<p>生产环境下为了保证性能和可用性，一般配置了容器集群作为服务的运行平台，客户不会想要同时重启集群中的所有容器，这样会造成服务整体下线。一般在这种情况下，容器管理系统应该配置教程重启机制。</p>
+<h2 id="容器更新"><a href="#容器更新" class="headerlink" title="容器更新"></a>容器更新</h2><p>容器可按照基础系统分为<strong>胖容器</strong>和<strong>瘦容器</strong>。</p>
+<p><strong>胖容器</strong>包含了一个健壮和完整的操作系统，要保存它们的更新非常重要。</p>
+<p>Docker容器的自定义性很容易导致开发人员把内容不明的随机容器放置到生产环境中。容器必须从头可重现的构造，如果发现组件中存在安全问题且无法再运行时更新的话，就必须重新构造。</p>
+<p><strong>瘦容器</strong>一般构造的是<strong>微服务</strong>环境，<strong>微服务</strong>环境只包含静态链接的二进制文件，如Java、Python、Ruby、Go的生产环境。这样的构造过程就只简单的利用更新后的依赖关系对应用程序进行重新构造。升级的问题就转换为构造时的依赖管理问题。</p>
+<h2 id="镜像验证"><a href="#镜像验证" class="headerlink" title="镜像验证"></a>镜像验证</h2><p>Docker1.3引入了Docker<strong>镜像验证</strong>，其目的是追逐镜像构造者和构造完整性，用户具备一组可信的秘钥，包括受信供应商以及用户所在组织的签名，未经签名的镜像则不予运行。</p>
+<h2 id="安全的运行Docker守护进程"><a href="#安全的运行Docker守护进程" class="headerlink" title="安全的运行Docker守护进程"></a>安全的运行Docker守护进程</h2><p>Docker守护进程默认只能通过本地Unix套接字访问，保持这个默认配置，不要使用-H参数将Docker守护进程监听帮到TCP端口上实现远程控制。</p>
+<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><p>容器可以通过–device参数直接访问宿主机的设备，尽量以只读方式共享它们，只提供需要的设备和最新的权限是最佳的策略。</p>
+<h2 id="SSH服务"><a href="#SSH服务" class="headerlink" title="SSH服务"></a>SSH服务</h2><p>不要在容器内运行SSH，要系统与在宿主机上管理<strong>容器</strong>。</p>
+<p>简化的容器更易于管理，SSH不是必须的，且它还会增加复杂度。</p>
+<h1 id="构造镜像"><a href="#构造镜像" class="headerlink" title="构造镜像"></a>构造镜像</h1><p><strong>构造镜像</strong>的方法将决定容器部署的速度、容器日志获取的难度、可配置性和安全程度。</p>
+<h2 id="容器镜像-VS-虚拟机镜像"><a href="#容器镜像-VS-虚拟机镜像" class="headerlink" title="容器镜像 VS 虚拟机镜像"></a>容器镜像 VS 虚拟机镜像</h2><p>虚拟机镜像提供了完整的文件系统虚拟化，镜像中的文件系统可以和宿主机文件系统完成不同。通常虚拟机镜像以数据卷的形式实现，以大文件的形式存储在宿主机中。虚拟机系统运行时，用户可以对其进行格式化、分区或修改文件系统。这种方法提供了巨大的隔离性和灵活性，但是性能、效率和成本表现不佳。</p>
+<p>容器镜像使用<strong>写时复制（copy-on-write CoW)</strong>技术来提高镜像的安全性和空间的使用效率。在创建和运行多个同一基线数据镜像时，<strong>写时复制</strong>技术可以节省大量时间和空间。每当操作尝试对文件系统进行更改时，实际上是发生在独立的叠加层的，基础镜像保持原封不动。</p>
+<h2 id="Docker对写时复制的使用"><a href="#Docker对写时复制的使用" class="headerlink" title="Docker对写时复制的使用"></a>Docker对写时复制的使用</h2><p>Docker使用写时复制将<strong>容器</strong>运行于一个叠加层上，而非直接运行于镜像上。原始镜像是以只读方式使用的，容器所有操作都这是对叠加层的修改。</p>
+<p>“<strong>Docker镜像是不可改变的</strong>”，你能做的其实是在它之上构造新的镜像。</p>
+<p>Docker叠加层可以跨宿主机共享，每个叠加层都包含了对基础镜像的引用，而基础镜像又是其他镜像的叠加层。</p>
+<p>每个叠加层都拥有一个唯一的”ID”，以及一个可选的名称和版本号。</p>
+<p>Docker在镜像仓库中索引镜像，并拉取该镜像的所有叠加层的引用，然后确定哪些层已经存在本地，并下载哪些缺失的叠加层。</p>
+<h2 id="镜像构造的基本原理"><a href="#镜像构造的基本原理" class="headerlink" title="镜像构造的基本原理"></a>镜像构造的基本原理</h2><p>构造一个镜像可以通过两种方法完成：</p>
+<ul>
+<li><p>从一个基础镜像启动一个容器，在容器中运行一系列的命令，如安装软件包、编辑配置文件和下载数据等，直到容器处于期望状态，软后对其进行保存。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># docker run -ti centos /bin/bash</span></div><div class="line">root@45678abcd:/<span class="comment"># touch test_foo_file</span></div><div class="line"><span class="comment"># docker commit 45678abcd newimage</span></div><div class="line"><span class="comment"># docker run -ti newimage /bin/bash</span></div></pre></td></tr></table></figure>
+<p>这种构造镜像的方法交互且直观，但很难实现<strong>重现</strong>和<strong>自动化</strong>。</p>
+</li>
+<li><p>另一种方法是使用基于<strong>Dockerfile</strong>文件的方法。在<strong>Dockerfile</strong>文件中包含一系列的指令，Docker在容器中运行这些指令以产生镜像。这些指令分为两组：</p>
+<ul>
+<li>修改镜像的文件系统<ul>
+<li>ADD：将URL指定的远程或本地文件写入镜像文件系统中</li>
+<li>RUN：在镜像上执行命令</li>
+</ul>
+</li>
+<li>修改镜像的元数据<ul>
+<li>CMD： 设置容器进程运行时的默认命令及其参数</li>
+</ul>
+</li>
+</ul>
+<p>使用docker build命令构造基于<strong>Dockerfile</strong>文件的镜像，以<strong>Dockerfile</strong>文件中<strong>FROM</strong>指令指定的基本镜像来启动一个临时容器，然后在这个容器中运行每条指令，Docker为每条指令建立一个中间镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">创建一个保存Dockerfile文件的目录</div><div class="line"><span class="comment"># mkdir myimage</span></div><div class="line"><span class="comment"># cd myimage</span></div><div class="line">创建一个Dockerfile文件</div><div class="line"><span class="comment"># cat &gt;&gt;Dockerfile &lt;&lt;ENDF</span></div><div class="line">FROM centos</div><div class="line">MAINTAINER kissingwolf@gmail.com</div><div class="line">RUN  touch test_foo_file</div><div class="line">ENDF</div><div class="line">接下里可以使用docker build命令构造指定镜像</div><div class="line"><span class="comment"># docker build -t newimage .</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="分层的文件系统和空间接管"><a href="#分层的文件系统和空间接管" class="headerlink" title="分层的文件系统和空间接管"></a>分层的文件系统和空间接管</h3><p>镜像是由一堆文件系统叠加层组成，每一层都是源自前一层的增加、修改和删除。</p>
+<ul>
+<li>在层里添加文件时，新文件将被创建。</li>
+<li>在层里删除文件时，这个文件会被标记为已删除，但是这个文件还包含在上一层中。</li>
+<li>在层里修改文件时，根据Docker运行时使用的存储驱动不同，有可能这个文件在新层中被重新创建，也有课程这个文件的部分磁盘扇区在新层中被新磁盘扇区替换。不论哪种方法，旧文件依旧在上一层中保持不变，新层包含新的修改。</li>
+</ul>
+<p>分层也带来一个问题，镜像无法缩小。随着多次重构镜像，镜像容量会随着层的增加不断增大。对于追求小型化的<strong>微服务</strong>而言，这也是不小的麻烦。</p>
+<p>解决空间增长问题的关键是<strong>从小做起</strong>，标准化一个特定的镜像版本，尽可能的将其用于所有容器。</p>
+<ul>
+<li>BusyBox基础镜像，大约2.5MB，支持运行静态编译二进制文件，且性能良好。</li>
+<li>Alpine基础镜像，在BusyBox的基础上构建了apk包管理器，并基于更轻更快的Musl libc。</li>
+<li>主流发行版Ubuntu和CentOS，镜像一般在几百兆，提供全功能有技术支持的镜像。</li>
+</ul>
+<h3 id="保持镜像小巧"><a href="#保持镜像小巧" class="headerlink" title="保持镜像小巧"></a>保持镜像小巧</h3><p>选定一个较小的镜像后，接下来就是在运行Dockerfile之后保持镜像的小巧。</p>
+<p>每运行Dockerfile文件中的一个命令，就会生成一个新的镜像层。层一旦生成，其大小就确定下来了，即使后一条Dockerfile指令删除了文件，也不会是否任何空间。</p>
+<p>可以像这样在Dockerfile中执行RUN命令,将所有命令放在一个步骤中：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">RUN</span><span class="bash"> curl http://classroom.example.com/foo.tgz -o /tmp/foo.tgz \</span></div><div class="line">&amp;&amp; tar xzf /tmp/foo.tgz -C /usr/<span class="built_in">local</span>/bin \</div><div class="line">&amp;&amp; rm <span class="_">-f</span> /tmp/foo.tgz</div></pre></td></tr></table></figure></p>
+<h3 id="让镜像可重用"><a href="#让镜像可重用" class="headerlink" title="让镜像可重用"></a>让镜像可重用</h3><p>两种配置容器中运行进程的方法：</p>
+<ul>
+<li>通过环境变量将配置传递给容器内部</li>
+<li>将配置文件或目录挂接到容器中</li>
+</ul>
+<p>使用变量或配置文件使镜像重用的好处是，用户可以使用相同的镜像，根据不同的变量或配置灵活的启动容器，完成不同的事物处理。变量和配置可以来自于启动脚本的硬编码或来自于文件，也可以来自于分布式配置服务或是调度器。</p>
+<p>使用-e参数传递环境变量的例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># docker run  --rm busybox /bin/bash -c 'echo "my variable is $MY_VAR"'</span></div><div class="line">my variable is</div><div class="line">未设置环境变量时，调用为空</div><div class="line"><span class="comment"># docker run  -e "MY_VAR=var_foo" --rm busybox /bin/bash -c 'echo "my variable is $MY_VAR"'</span></div><div class="line">my variable is var_foo</div><div class="line">通过 <span class="_">-e</span> 参数传递了环境变量</div></pre></td></tr></table></figure></p>
+<p>使用挂载文件或目录的方式进行配置容器，挂载发生在容器进程启动之前。</p>
+<p>使用-v参数挂接宿主机上文件配置容器运行进程的例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">首先在宿主机上创建配置文件</div><div class="line"><span class="comment"># cat &gt;&gt;env.conf&lt;&lt;ENDF</span></div><div class="line">Name=kevin</div><div class="line">Mail=kissingwolf@gmail.com</div><div class="line">ENDF</div><div class="line">通过-v参数挂接配置文件到容器，通过容器内部程序调用执行</div><div class="line"><span class="comment"># docker run  -v ./evn.conf:/evn.conf --rm busybox /bin/bash -c 'source /evn.conf ; echo "My Name is $Name , My Email is $Mail"'</span></div></pre></td></tr></table></figure></p>
+<h3 id="镜像在Docker变化时对自身进行重新配置"><a href="#镜像在Docker变化时对自身进行重新配置" class="headerlink" title="镜像在Docker变化时对自身进行重新配置"></a>镜像在Docker变化时对自身进行重新配置</h3><p>docker-gen工具在Docker提供的容器信息基础上，使用提供的模板来生成配置文件。</p>
+<h3 id="信任与安全"><a href="#信任与安全" class="headerlink" title="信任与安全"></a>信任与安全</h3><p>在使用Docker镜像时，最重要的问题就是镜像是否可信。这个信任来自两个层面：</p>
+<ul>
+<li>镜像本身是否可信，镜像是否由受信任的开发者编写并提交。</li>
+<li>镜像的下载渠道是否可信，下载到的镜像是否是我们想要下载的。</li>
+</ul>
+<p>目前Docker尚未提高端到端的信任链，要保护自己避免运行包含恶意软件和其他风险的镜像，最好的方法是自主构建镜像。要完整的确认镜像的安全性，用户需要检查所有镜像层,包括基础操作系统镜像层。</p>
+<h3 id="保证镜像不可修改"><a href="#保证镜像不可修改" class="headerlink" title="保证镜像不可修改"></a>保证镜像不可修改</h3><p>虽然容器文件系统是可写的，但最好将其视为只读，既不要在容器里保持数据，也不要试图去修改镜像内的文件，仅在容器启动阶段去生成配置文件，所有需要保持的数据要么放在网络存储要么以“<strong>卷</strong>”的方式挂在宿主机上。</p>
+<p>将容器文件系统视为只读的原因主要是容器内的文件系统比宿主机的文件系统慢很多，而且容器在销毁后数据记忆丢失。</p>
+<p>容器中一个通用的模型是将日志写入容器进程的标准输出，而非写入文件系统。用户依赖Docker自己的日志收集器来提取哪些日志，而不再需要对容器的文件系统进行写入。</p>
+<p>如果容器中的服务默认无法将日志输出到标准输出，简单的实现方法是将日志文件链接到标准输出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">例如Nginx的日志配置</div><div class="line">access_log /var/log/nginx/access_log main；</div><div class="line">我们可以在Dockerfile文件中创建链接文件</div><div class="line">RUN ln -sf 、dev/stdout /var/log/nginx/access_log</div><div class="line">这样容器nginx运行时日志就输出到标准输出了</div></pre></td></tr></table></figure></p>
+<h1 id="存储Docker镜像"><a href="#存储Docker镜像" class="headerlink" title="存储Docker镜像"></a>存储Docker镜像</h1><p>存储Docker镜像有三种方式：</p>
+<ul>
+<li>公共镜像注册仓库服务</li>
+<li>私有镜像注册仓库服务</li>
+<li>本地保存/载入模式</li>
+</ul>
+<h2 id="使用公共镜像注册仓库服务存储Docker镜像"><a href="#使用公共镜像注册仓库服务存储Docker镜像" class="headerlink" title="使用公共镜像注册仓库服务存储Docker镜像"></a>使用公共镜像注册仓库服务存储Docker镜像</h2><p>对于普遍的开放环境或是公共用途，使用Docker Hub（hub.docker.com）保存镜像比较方便，Docker Hub就行是Docker的GitHub。使用Docker Hub很方便，注册、登录、推送或拉取镜像。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">将本地只有镜像推送到Docker Hub</div><div class="line"><span class="comment"># docker push -t kissingwolf/busybox</span></div><div class="line">将Docker Hub上的用户镜像拉取到本地</div><div class="line"><span class="comment"># docker pull kissingwolf/busybox</span></div></pre></td></tr></table></figure>
+<p>使用公共仓库时，一定要加强使用者安全意识的培养。虽然公共仓库中的镜像也可以设置为私有状态，但是如果镜像中存储了源代码、安全密钥或配置细节（例如用户名和密码），将会带来很严重的安全性问题。</p>
+<h2 id="公共仓库自动化构造"><a href="#公共仓库自动化构造" class="headerlink" title="公共仓库自动化构造"></a>公共仓库自动化构造</h2><p>用户可以使用Docker Hub自动构建功能完成镜像的升级或重新构造。将Docker Hub仓库指向一个包含Dockerfile的GitHub仓库或仓库下的路径。设置自动化构建后，每当修改配置源文件（Dockerfile）时，Docker Hub都会自动化的构造新镜像。</p>
+<p>自动化构造的优点：</p>
+<ul>
+<li>减少用户的工作量</li>
+<li>安全补丁的自动化更新</li>
+<li>以事件驱动的方式更新镜像</li>
+</ul>
+<h2 id="私有仓库"><a href="#私有仓库" class="headerlink" title="私有仓库"></a>私有仓库</h2><p>私有仓库可以让企业安全的将镜像保存在防火墙或VPN之后，以确保代码和镜像仓库的安全。</p>
+<p>建立私有仓库需要考虑 <strong>网络带宽</strong>、<strong>登录凭证</strong>、<strong>SSL安全性</strong>、<strong>监控</strong> 以及 <strong>磁盘存储</strong>等问题。</p>
+<p>私有仓库有以下优点：</p>
+<ul>
+<li>速度–将仓库放在本地网络或自有网络中可以加速镜像的推送和拉取，还可以解决由于GFW导致的访问拒绝问题。</li>
+<li>安全性–将仓库放在可控的范围内，并分离内外网，可以做到物理阻隔危险。</li>
+</ul>
+<h2 id="私有仓库的扩展"><a href="#私有仓库的扩展" class="headerlink" title="私有仓库的扩展"></a>私有仓库的扩展</h2><p>在运行内部私有仓库的时候，建议使用网络存储方式作为仓库镜像存储目录，并根据镜像请求的实际情况做负载均衡以达成冗余。</p>
+<p>除了Docker提供的官方Registry服务外，还有其他公司也提供了第三方的Registry扩展服务，例如VMware提供了harbor。</p>
+<p><a href="https://github.com/vmware/harbor" target="_blank" rel="external">Harbor</a>是由VMware中国研发团队为企业用户设计的Registry Server开源项目，包括了权限管理(RBAC)、图形管理界面、LDAP/AD集成、审计、自我注册、HA等企业必需的功能，同时针对中国用户的特点，原生支持中文，并计划实现镜像复制(roadmap)等功能。</p>
+<h2 id="本地保存-载入"><a href="#本地保存-载入" class="headerlink" title="本地保存/载入"></a>本地保存/载入</h2><p>本地的保持和载入镜像问题是非常常见的需求，并且在没有私有仓库的情况下是绕过GFW的一种简单的方法。</p>
+<p>保持/载入的命令方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># docker build fooOS</span></div><div class="line"><span class="comment"># docker save fooOS &gt;./fooOS.tar</span></div><div class="line"><span class="comment"># docker load &lt;./fooOS.tar</span></div></pre></td></tr></table></figure>
+<p><strong>build</strong> 命令用来根据 <strong>Dockerfile</strong> 创建镜像。<strong>save</strong> 用来保持镜像文件，保持的格式为 <strong>tar</strong> 打包格式。<strong>load</strong> 用来载入 <strong>tar</strong> 打包的镜像文件。</p>
+<p>需要注意的是除了 <strong>save/load</strong> 命令之外，Docker还提供了 <strong>export/import</strong> 命令，其主要特点如下：</p>
+<ul>
+<li><p>与 <strong>save/load</strong> 操作 <strong>镜像</strong> 不同，<strong>export/import</strong> 操作的是 <strong>容器</strong> 。</p>
+</li>
+<li><p><strong>export/import</strong> 操作因为会丢失历史和元数据，而 <strong>save/loaded</strong> 的镜像没有丢失历史和层，所以 <strong>export/import</strong> 产生的tar包文件体积较 <strong>save/load</strong> 小。</p>
+</li>
+<li><p><strong>export/import</strong> 无法回滚到之前的层，而 <strong>save/loaded</strong> 持久化整个镜像，可以做到层回滚（可以执行docker tag <layer id=""> <image name="">来回滚之前的层）。</image></layer></p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># docker build fooOS</span></div><div class="line"><span class="comment"># docker export fooOS &gt;./fooOS.tar</span></div><div class="line"><span class="comment"># docker import fooOS:laster &lt;./fooOS.tar</span></div></pre></td></tr></table></figure>
+<p>可以通过docker history image_id 命令参看镜像的层结构。</p>
+<h2 id="压缩Docker镜像文件体积"><a href="#压缩Docker镜像文件体积" class="headerlink" title="压缩Docker镜像文件体积"></a>压缩Docker镜像文件体积</h2><p>由于用于构建镜像的Linux版本、环境、依赖库和操作不同，Docker镜像的体积可能会越来越大。使用CentOS、RHEL、Ubuntu等发行版作为基础镜像，然后使用RPM、YUM或APT-GET等更新和安装软件包后会遗留一些缓冲文件和依赖项，通过删除和合并镜像层可以减小镜像的文件大小。</p>
+<p>CentOS和RHEL作为基础镜像的Docker镜像可以使用goldmann的<a href="https://github.com/goldmann/docker-squash" target="_blank" rel="external">docker-squash</a>工具压缩镜像空间。</p>
+<p>Ubuntu作为基础镜像的Docker镜像可以使用jwilder的<a href="https://github.com/jwilder/docker-squash" target="_blank" rel="external">docker-squash</a>工具压缩镜像空间。ki</p>
+<h1 id="自动化集成和持续部署（CI-CD）"><a href="#自动化集成和持续部署（CI-CD）" class="headerlink" title="自动化集成和持续部署（CI/CD）"></a>自动化集成和持续部署（CI/CD）</h1><p>Docker构造和推送的方便简单，结合自动化集成和持续部署是目前最强大的DevOps服务部署方式。</p>
+<p>Docker本质上是一个应用程序交付框架，Docker的座右铭是：构造、交付与运行。</p>
+<p>开发人员期望的是迅速且频繁的交付代码，而企业交付的是产品（打包且经过测试的代码合集），Docker可以将整个产品打包到一个容器中，这不仅仅可以迅速且频繁的打包交付代码，也可以交付已经过测试的产品。</p>
+<p>利用Dockerfile结合Gitlab（Github的开源实现）很容易的就可以实现Docker镜像自身的自动化集成和持续部署（CI/CD）。</p>
+<h2 id="生产环境下的团队使用Docker标准"><a href="#生产环境下的团队使用Docker标准" class="headerlink" title="生产环境下的团队使用Docker标准"></a>生产环境下的团队使用Docker标准</h2><p>不要让所有人构造并推送容器，如果所有人都随心所欲的选择自己喜欢的基础镜像，并使用自己熟悉的应用服务运行自己编写的代码，最终的结果和无政府主义狂徒构造的社会一样，将是一场结局惨淡的噩梦。</p>
+<h3 id="在一个构造系统中构造所有镜像"><a href="#在一个构造系统中构造所有镜像" class="headerlink" title="在一个构造系统中构造所有镜像"></a>在一个构造系统中构造所有镜像</h3><blockquote>
+<p>一致性是扩展环境和传播知识的关键。</p>
+</blockquote>
+<p>应该仔细考虑有关构造、添加、使用和运行Docker容器的标准。规定好基础服务、代码库、依赖库和基础程序编写规范，由统一的提交、审核和发布规则为你的企业产品发布保驾护航。</p>
+<p>安全也是构造统一标准的一部分，什么可以放入容器，什么不能放入容器，都要体现在统一标准中。相信你也不希望在容器中保存着你的明文密码或者秘钥吧。</p>
+<h3 id="强制使用标准做法"><a href="#强制使用标准做法" class="headerlink" title="强制使用标准做法"></a>强制使用标准做法</h3><p>你和你的团队应该制定统一的标准，例如Web服务是什么、Java使用什么版本等等，细化到如何组织目录结构和环境参数规范。这样可以保证即使你和你的团队在相当长的时候后去调试一个被遗忘的容器或镜像，依旧可以有章可循。越早的强制推行标准会越早的体现它的优势。</p>
+<h3 id="使用标准基础镜像"><a href="#使用标准基础镜像" class="headerlink" title="使用标准基础镜像"></a>使用标准基础镜像</h3><p>树立一个规范，让所有镜像继承于一个标准基础镜像，例如Python应用，运维团队创建一个基于Python2.6且有安全保证的基础镜像版本“ uplooking/python_base:2016_07 ”，开放团队仅仅需要使用“FROM”调用这个基础镜像就可以了，然后在构造的时候使用“ADD”将代码添加入镜像，就像这样：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> uplooking/python_base:<span class="number">2016</span>_07</div><div class="line"><span class="keyword">ADD</span><span class="bash"> python_code.py /code.py</span></div><div class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"python"</span>,<span class="string">"./code.py"</span>]</span></div></pre></td></tr></table></figure></p>
+<p>这样可以大大简化镜像的创建过程，将大量的细节交给拥有并维护这个基础镜像的人负责。</p>
+<h3 id="使用Dcoker进行集中测试"><a href="#使用Dcoker进行集中测试" class="headerlink" title="使用Dcoker进行集中测试"></a>使用Dcoker进行集中测试</h3><p>用户可以把静态环境转换为一个在测试基础设施中集成Docker镜像的动态环境。Docker可以非常迅速的启动和停止，加上制作优质镜像的简易性，可以根据需要对测试基础设施进行支持，并且很容易的就可以在多个物理机上完成基础测试环境的部署，然后在结束测试后将其关闭。这样不仅部署迅速、环境统一，而且也可以为公司省下保持静态基础设备运行的费用。</p>
+<h2 id="配置管理-Configuration-Management-CM"><a href="#配置管理-Configuration-Management-CM" class="headerlink" title="配置管理(Configuration Management,CM)"></a>配置管理(Configuration Management,CM)</h2><p>配置管理工具的目标是完成新上线服务器的配置和现有线上服务配置的更新等任务的标准化和自动化。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/08/编写使用LVM快照备份Mysql的脚本/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/08/编写使用LVM快照备份Mysql的脚本/" itemprop="url">
+                  编写使用LVM快照备份Mysql的脚本
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T23:08:39+08:00">
+                2016-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/08/编写使用LVM快照备份Mysql的脚本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/编写使用LVM快照备份Mysql的脚本/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天北京的同事问如何编写使用LVM快照备份Mysql的脚本。</p>
+<p>想来还是很简单的，主要是有一个坑，mysql 中“LOCK TABLES” 的会话是不能中断的，如果脚本中先执行mysql 锁语句，然后断开连接去执行lvm快照的创建，其实数据库是没有锁住的。</p>
+<p>听到这个问题，突然灵光一现，想到其实是多进程问题，要在锁住数据库的同时执行lvm快照创建备份操作。于是写了如下测试代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">mkfifo /tmp/mypipo</div><div class="line">mysql mydb &lt;/tmp/mypipe &amp;</div><div class="line">(</div><div class="line">  echo &quot;LOCK TABLES mytable READ ;&quot; 1&gt;&amp;6 </div><div class="line">  echo &quot;Create LVM snapshot &quot;</div><div class="line">  echo &quot;UNLOCK  tables;&quot; 1&gt;&amp;6</div><div class="line">) 6&gt; /tmp/myspipe</div></pre></td></tr></table></figure>
+<p>然后有想起来mysql中是有一个SYSTEM指令的，可以执行外部系统命令，就想到了另外一种做法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">mysql &lt;&lt;ENF</div><div class="line">LOCK TABLES mytable READ;</div><div class="line">SYSTEM /path/to/create_lvm_snapshot.sh</div><div class="line">UNLOCK TABLES;</div><div class="line">ENF</div></pre></td></tr></table></figure>
+<p>北京同事选了第二种方法。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/06/修改grub2默认启动项目/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/06/修改grub2默认启动项目/" itemprop="url">
+                  修改grub2默认启动项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T23:19:04+08:00">
+                2016-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/06/修改grub2默认启动项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/06/修改grub2默认启动项目/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@rhel7 ~]# grep ^menuentry /boot/gru2/grub.cfg  | curt -f 2 -d \&apos; | nl -v 0</div><div class="line">    0 RedHat Enterprise Linux (3.10.12.ooxx) 7 </div><div class="line">    1 RedHat Enterprise Linux (4.4.12.ooxx) 7 </div><div class="line"></div><div class="line">[root@rhel7 ~]# grub2-set-default 1</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/06/github-fork-项目的更新操作/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/06/github-fork-项目的更新操作/" itemprop="url">
+                  github fork 项目的更新操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T00:23:45+08:00">
+                2016-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/06/github-fork-项目的更新操作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/06/github-fork-项目的更新操作/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>github上有个很方便的功能叫fork，将别人的工程一键复制到自己账号下。这个功能很方便，但有点不足的是，当源项目更新后，你fork的分支并不会一起更新，需要自己手动去更新。下面为手动更新的方法</p>
+<p>1、在本地装好github客户端，或者git客户端</p>
+<p>2、clone 自己的fork分支到本地，可以直接使用github客户端，clone到本地，如果使用命令行，命令为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/kissingwolf/UP100_ule.git</div></pre></td></tr></table></figure>
+<p>3、增加源分支地址到你项目远程分支列表中(此处是关键)，先得将原来的仓库指定为upstream，命令为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add upstream https://github.com/BoobooWei/UP100_ule.git</div></pre></td></tr></table></figure>
+<p>此处可使用git remote -v查看远程分支列表</p>
+<p>4、fetch源分支的新版本到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[master]&gt; git fetch upstream</div></pre></td></tr></table></figure>
+<p>5、合并两个版本的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[master]&gt; git merge upstream/master</div></pre></td></tr></table></figure>
+<p>6、将合并后的代码push到github上去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[master]&gt; git push origin maste</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400"
+               alt="Kevin Zou" />
+          <p class="site-author-name" itemprop="name">Kevin Zou</p>
+          <p class="site-description motion-element" itemprop="description">任何复杂纷乱的问题都有简单朴实的解决方案</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shell909090.org/" title="Shell's Home" target="_blank">Shell's Home</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kevin Zou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kissingwolf"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
