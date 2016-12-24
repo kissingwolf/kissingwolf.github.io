@@ -6,6 +6,7 @@
     "version": "3.2.2"
   },
   "dependencies": {
+    "dtrace-provider": "^0.8.0",
     "hexo": "^3.2.0",
     "hexo-deployer-git": "^0.2.0",
     "hexo-generator-archive": "^0.1.4",
