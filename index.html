@@ -280,6 +280,148 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/25/关于Windows7中Git-Bash中文乱码问题/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/25/关于Windows7中Git-Bash中文乱码问题/" itemprop="url">
+                  关于Windows7中Git Bash中文乱码问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-25T22:45:11+08:00">
+                2016-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/25/关于Windows7中Git-Bash中文乱码问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/25/关于Windows7中Git-Bash中文乱码问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天和同事小龙在其Windows 7 的笔记本电脑上配置GitHub Blog的时候，发现Windows 7 下的Git Bash环境下中文字符显示为乱码，并且无法正常输入中文。</p>
+<p>晚上查了一下手册，发现是Windows 7环境下字符编码问题。</p>
+<blockquote>
+<p>提交时字符编码问题</p>
+</blockquote>
+<p>打开Git Bash终端，在<code>~</code>目录下修改<code>.gitconfig</code>文件内容，如果没有这个文件就建一个。</p>
+<p>添加内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[gui] </div><div class="line">encoding = utf-8 </div><div class="line">[i18n] </div><div class="line">commitencoding = GB2312 #log编码，window 7下默认编码为gb2312,声明后发到GitHub服务器才不会乱码 </div><div class="line">[svn] </div><div class="line">pathnameencoding = GB2312 #支持中文路径</div></pre></td></tr></table></figure>
+<blockquote>
+<p>显示目录信息时字符编码问题</p>
+</blockquote>
+<p>在<code>/etc/profile.d/aliases.sh</code>文件中确认如下内容是否存在，如果不存在或是被注释了，请修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alias ls=&apos;ls --show-control-chars --color=auto&apos; #ls能够正常显示中文</div></pre></td></tr></table></figure>
+<blockquote>
+<p>输入时字符编码问题</p>
+</blockquote>
+<p>在<code>/etc</code>目录下找到<code>inputrc</code>文件，确认如下两行是否存在，如果不存在请添加，如果被注释请取消注释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">set output-meta on #可以正常输入中文 </div><div class="line">set convert-meta off</div></pre></td></tr></table></figure>
+<p><strong>Windows 10 Git Bash 安装后可以正常显示中文，无需做任何调整</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/25/配置macos-的-etc-bashrc/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1302,7 +1444,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1312,7 +1454,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
