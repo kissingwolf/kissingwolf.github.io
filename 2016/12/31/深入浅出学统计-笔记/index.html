@@ -1,0 +1,838 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="statistics," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Kissingwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="随机抽样
+随机样本的关键特性是：它作为其来源的总体没有系统性的差别
+
+样本是关于特定变量的一个独立观测值集合。当样本由随机采集的观测值组成，且其中每个观测值与其他观测值相互独立时，我们称其为随机样本。
+
+简单随机样本
+
+一个大小为n的简单随机样本（SRS）是n个观测值的集合，且抽取方法满足：所有可能从总体抽取的，包含n个观测值的样本都有相等的机会被抽到。
+不论是否选择随机抽样技术，都必须确保所得到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入浅出学统计-笔记">
+<meta property="og:url" content="http://blog.kissingwolf.com/2016/12/31/深入浅出学统计-笔记/index.html">
+<meta property="og:site_name" content="Kissingwolf's Blog">
+<meta property="og:description" content="随机抽样
+随机样本的关键特性是：它作为其来源的总体没有系统性的差别
+
+样本是关于特定变量的一个独立观测值集合。当样本由随机采集的观测值组成，且其中每个观测值与其他观测值相互独立时，我们称其为随机样本。
+
+简单随机样本
+
+一个大小为n的简单随机样本（SRS）是n个观测值的集合，且抽取方法满足：所有可能从总体抽取的，包含n个观测值的样本都有相等的机会被抽到。
+不论是否选择随机抽样技术，都必须确保所得到">
+<meta property="og:updated_time" content="2016-12-31T09:17:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入浅出学统计-笔记">
+<meta name="twitter:description" content="随机抽样
+随机样本的关键特性是：它作为其来源的总体没有系统性的差别
+
+样本是关于特定变量的一个独立观测值集合。当样本由随机采集的观测值组成，且其中每个观测值与其他观测值相互独立时，我们称其为随机样本。
+
+简单随机样本
+
+一个大小为n的简单随机样本（SRS）是n个观测值的集合，且抽取方法满足：所有可能从总体抽取的，包含n个观测值的样本都有相等的机会被抽到。
+不论是否选择随机抽样技术，都必须确保所得到">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.kissingwolf.com/2016/12/31/深入浅出学统计-笔记/"/>
+
+
+
+
+
+  <title> 深入浅出学统计-笔记 | Kissingwolf's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88598932-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Kissingwolf's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">任何复杂纷乱的问题都有简单朴实的解决方案</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/31/深入浅出学统计-笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入浅出学统计-笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-31T12:48:49+08:00">
+                2016-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/31/深入浅出学统计-笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/31/深入浅出学统计-笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="随机抽样"><a href="#随机抽样" class="headerlink" title="随机抽样"></a>随机抽样</h2><blockquote>
+<p>随机样本的关键特性是：它作为其来源的总体<code>没有系统性的差别</code></p>
+</blockquote>
+<p><code>样本</code>是关于特定<code>变量</code>的一个独立观测值集合。当<code>样本</code>由<code>随机</code>采集的观测值组成，且其中每个观测值与其他观测值<code>相互独立</code>时，我们称其为<code>随机样本</code>。</p>
+<blockquote>
+<p>简单随机样本</p>
+</blockquote>
+<p>一个大小为n的<code>简单随机样本（SRS）</code>是n个观测值的集合，且抽取方法满足：<code>所有可能从总体抽取的</code>，包含n个观测值的样本都有<code>相等的机会被抽到</code>。</p>
+<p>不论是否选择<code>随机抽样技术</code>，都必须<code>确保所得到的样本是总体的代表</code>。否则，随后的一切工作都毫无意义。</p>
+<h2 id="样本大小（n）"><a href="#样本大小（n）" class="headerlink" title="样本大小（n）"></a>样本大小（n）</h2><blockquote>
+<p>样本大小即单一样本中的测量值的总数。</p>
+</blockquote>
+<p>一般来说，n越大，我们对统计结论的<code>信心</code>越大，但是样本<code>必须</code>是<code>随机</code>的。</p>
+<h2 id="样本平均数"><a href="#样本平均数" class="headerlink" title="样本平均数"></a>样本平均数</h2><p>样本平均数的计算公式，将样本中的所有数值都加起来，然后除以样大小。<br>$$<br>\overline{x}=\frac{x_{1}+x_{2}…x_{n}}{n}<br>$$</p>
+<blockquote>
+<p><code>中位数</code>是一个样本的“<strong>中间值</strong>”，更适合于在存在<code>偏斜</code>的情况下使用；通过去掉一本分<code>最大值</code>和<code>最小值</code>可以算出<code>去尾平均数</code>，在样本存在<code>极致</code>的情况下啊，这种平均数更适合。</p>
+</blockquote>
+<h2 id="标准差（s）"><a href="#标准差（s）" class="headerlink" title="标准差（s）"></a>标准差（s）</h2><blockquote>
+<p>计算标准差的目的是为了了解与平均值的平均距离。</p>
+</blockquote>
+<ul>
+<li>计算每个测量值与样本平均值之间的距离，我们将这个距离称为<code>偏差</code></li>
+<li>求出每个<code>偏差</code>的平方根</li>
+<li>将说有<code>偏差</code>的平方根加起来</li>
+<li>将说有得到的总数和除以n-1（此处得到结果称之为<code>方差</code>)</li>
+<li>求以上结果的平方根</li>
+</ul>
+<p>$$<br>S=\sqrt{\frac{(x_{1}-\overline{x})^{2}+(x_{2}-\overline{x})^{2}+…(x_{n}-\overline{x})^{2}}{n-1}}<br>$$</p>
+<h2 id="分布"><a href="#分布" class="headerlink" title="分布"></a>分布</h2><blockquote>
+<p><code>分布</code>描述了一个随机变量的所有可能数值的位置情况。</p>
+</blockquote>
+<p>如果你用一个总体中的某个变量的所有数值画一张直方图，就会看到该变量的<code>总体分布</code>。</p>
+<p>通过<code>分布</code>可以计算特定区域中的随机抽取值的<code>概率（即长期可能性）</code>。</p>
+<h2 id="样本统计值与总体参数"><a href="#样本统计值与总体参数" class="headerlink" title="样本统计值与总体参数"></a>样本统计值与总体参数</h2><blockquote>
+<p>统计的目的是利用样本对总体进行猜测。</p>
+</blockquote>
+<p>“X拔”特指<code>样本平均数</code><br>$$<br>\overline{X}<br>$$<br>“S”特指<code>样本标准差</code><br>$$<br>S<br>$$<br>“缪”特指<code>总体平均数</code><br>$$<br>\mu<br>$$<br>“西格玛”特指<code>总体标准差</code><br>$$<br>\sigma<br>$$<br><code>统计值</code>是我们实际测量的数值，因此是确凿无疑的数值。</p>
+<p><code>参数</code>是我们想知道的数值，但只能通过猜测获得。</p>
+<h2 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h2><blockquote>
+<p>正态分布代表了平均数的聚集趋势</p>
+</blockquote>
+<p>我们可以把正态分布分割为不同的区间，用这些区间描述其中的数值的概率。</p>
+<h2 id="抽样分布"><a href="#抽样分布" class="headerlink" title="抽样分布"></a>抽样分布</h2><blockquote>
+<p>一个抽样分布就是一个样本统计量的分布</p>
+</blockquote>
+<h2 id="中心极限定理（CLT）"><a href="#中心极限定理（CLT）" class="headerlink" title="中心极限定理（CLT）"></a>中心极限定理（CLT）</h2><blockquote>
+<p>当样本大小N很大时，“X拔”的抽样分布接近正态</p>
+</blockquote>
+<p>N &gt;= 30时此定理成立，所以我们一般认为样本数大于30时为“大样本”。</p>
+<h2 id="概率"><a href="#概率" class="headerlink" title="概率"></a>概率</h2><blockquote>
+<p>概率是0-1之间的一个数，它对随机事件的发生可能性进行量化，从长期看，概率越接近1，事件越课程发生。</p>
+<p>概率仅仅针对于长期性。</p>
+</blockquote>
+<p>任何概率分布中的总面积都等于1 。</p>
+<h2 id="概率数学"><a href="#概率数学" class="headerlink" title="概率数学"></a>概率数学</h2><blockquote>
+<p>微积分技术正是用来计算任何分布内的面积。</p>
+</blockquote>
+<p>正态分布的概率函数：<br>$$<br>f_{\mu ,\sigma }(x)=\frac{1}{\sigma \sqrt{2\pi }}\exp{-\frac{1}{2\sigma ^{2}} (x-\mu )^{2}}<br>$$</p>
+<h2 id="置信区间"><a href="#置信区间" class="headerlink" title="置信区间"></a>置信区间</h2><blockquote>
+<p>置信区间是与特定置信水平有关的一类区间估计。</p>
+</blockquote>
+<p>计算总体平均数的95%置信区间的公式：<br>$$<br>\overline{x}\pm 2(\frac{S}{\sqrt{n}})<br>$$<br>通过改变<code>截尾值</code>来改变<code>置信水平</code>，比如1.3作为截尾值可以确定80%的置信区间。</p>
+<h2 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h2><blockquote>
+<p>我们是否认为我们的统计值与原假设所预测的参数具有足够大的偏差，从而可以有理有据拒绝原假设，而选择另一观点。</p>
+</blockquote>
+<h2 id="P值"><a href="#P值" class="headerlink" title="P值"></a>P值</h2><blockquote>
+<p>在原假设为真的前提下，我们将会观测到的数据的极值不超过我们实际观测到的数据的极值得概率。</p>
+</blockquote>
+<p>P值是对概率的量度，因此只有从长远考虑时才有意义。</p>
+<p>在实践中，如果P值“足够小”，即小于0.05，我们就拒绝原假设。小于0.05的概率所表达的意义和“长期结果为每20次不到1次”所表达的意义相当。</p>
+<h2 id="我们总有可能是错的"><a href="#我们总有可能是错的" class="headerlink" title="我们总有可能是错的"></a>我们总有可能是错的</h2><blockquote>
+<p>我们的统计总有可能是错误的，这一点永远改变不了。我们是在用长期现象评估短期观察结果，这样的事实必然导致这样的结果。</p>
+</blockquote>
+<p>假设检验无非是提出了这样的一个问题：“我们出于偶然而得到手头这些结果的可能性有多大？” 通过假设检验无法决定性的推翻或证明任何理论；假设检验只能用来帮助我们质疑原假设。</p>
+<h2 id="差值推断"><a href="#差值推断" class="headerlink" title="差值推断"></a>差值推断</h2><p>计算两个总体平均数之间的差值的置信区间公式：<br>$$<br>(\overline{x_{1}}-\overline{x_{2}})\pm 2(\sqrt{\frac{S_{1}^{2}-S_{2}^{2}}{n}})<br>$$</p>
+<h2 id="小样本推断"><a href="#小样本推断" class="headerlink" title="小样本推断"></a>小样本推断</h2><blockquote>
+<p>如果样本很小（小于30），我们不能使用中心极限定理，而应该使用T分布，只有总体本身是正态分布的时候它才有效。</p>
+</blockquote>
+<p><code>T分布</code>又称之为<code>学生分布</code>。</p>
+<h2 id="方差分析"><a href="#方差分析" class="headerlink" title="方差分析"></a>方差分析</h2><blockquote>
+<p>方差分析的作用是组间差异和组内差异进行比较。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/statistics/" rel="tag"># statistics</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/25/关于Windows7中Git-Bash中文乱码问题/" rel="next" title="关于Windows7中Git Bash中文乱码问题">
+                <i class="fa fa-chevron-left"></i> 关于Windows7中Git Bash中文乱码问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/31/深入浅出学统计-笔记/"
+           data-title="深入浅出学统计-笔记" data-url="http://blog.kissingwolf.com/2016/12/31/深入浅出学统计-笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400"
+               alt="Kevin Zou" />
+          <p class="site-author-name" itemprop="name">Kevin Zou</p>
+          <p class="site-description motion-element" itemprop="description">任何复杂纷乱的问题都有简单朴实的解决方案</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://shell909090.org/" title="Shell's Home" target="_blank">Shell's Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://booboowei.github.io/" title="BoobooWei Blog" target="_blank">BoobooWei Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.uplooking.com/" title="尚观科技" target="_blank">尚观科技</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#随机抽样"><span class="nav-number">1.</span> <span class="nav-text">随机抽样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本大小（n）"><span class="nav-number">2.</span> <span class="nav-text">样本大小（n）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本平均数"><span class="nav-number">3.</span> <span class="nav-text">样本平均数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准差（s）"><span class="nav-number">4.</span> <span class="nav-text">标准差（s）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布"><span class="nav-number">5.</span> <span class="nav-text">分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样本统计值与总体参数"><span class="nav-number">6.</span> <span class="nav-text">样本统计值与总体参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正态分布"><span class="nav-number">7.</span> <span class="nav-text">正态分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽样分布"><span class="nav-number">8.</span> <span class="nav-text">抽样分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中心极限定理（CLT）"><span class="nav-number">9.</span> <span class="nav-text">中心极限定理（CLT）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概率"><span class="nav-number">10.</span> <span class="nav-text">概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概率数学"><span class="nav-number">11.</span> <span class="nav-text">概率数学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#置信区间"><span class="nav-number">12.</span> <span class="nav-text">置信区间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#假设检验"><span class="nav-number">13.</span> <span class="nav-text">假设检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P值"><span class="nav-number">14.</span> <span class="nav-text">P值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们总有可能是错的"><span class="nav-number">15.</span> <span class="nav-text">我们总有可能是错的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差值推断"><span class="nav-number">16.</span> <span class="nav-text">差值推断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小样本推断"><span class="nav-number">17.</span> <span class="nav-text">小样本推断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方差分析"><span class="nav-number">18.</span> <span class="nav-text">方差分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kevin Zou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"kissingwolf"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
