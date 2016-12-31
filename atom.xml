@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2016-12-31T09:17:11.000Z</updated>
+  <updated>2016-12-31T10:05:10.000Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo使用NexT主题时mathjax输入数学公式注意事项</title>
+    <link href="http://blog.kissingwolf.com/2016/12/31/Hexo%E4%BD%BF%E7%94%A8NexT%E4%B8%BB%E9%A2%98%E6%97%B6mathjax%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
+    <id>http://blog.kissingwolf.com/2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/</id>
+    <published>2016-12-31T09:33:14.000Z</published>
+    <updated>2016-12-31T10:05:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mathjax号称<code>Beautiful math in all browsers</code>，是展示数学公式方面的好工具。</p>
+<h2 id="如何编写Mathjax"><a href="#如何编写Mathjax" class="headerlink" title="如何编写Mathjax"></a>如何编写Mathjax</h2><ul>
+<li><a href="http://docs.mathjax.org/en/latest/start.html" target="_blank" rel="external">Mathjax官方文档</a></li>
+<li><a href="https://www.codecogs.com/latex/eqneditor.php?lang=zh-cn" target="_blank" rel="external">Mathjax在线生成器</a></li>
+<li>在<a href="http://www.typora.io/" target="_blank" rel="external">Typora</a>工具中，使用<code>$$</code>可以编排Mathjax</li>
+</ul>
+<h2 id="NexT打开Mathjax支持"><a href="#NexT打开Mathjax支持" class="headerlink" title="NexT打开Mathjax支持"></a>NexT打开Mathjax支持</h2><p>默认Hexo的NexT主题是没有打开Mathjax支持的，需要编辑主题的<code>_config.xml</code>文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># MathJax Support</div><div class="line">mathjax:</div><div class="line">  enable: false</div><div class="line">  per_page: false</div><div class="line">  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</div></pre></td></tr></table></figure>
+<p>将<code>enable：false</code>设为<code>enable：true</code>。</p>
+<h2 id="复制别人的mathjax代码"><a href="#复制别人的mathjax代码" class="headerlink" title="复制别人的mathjax代码"></a>复制别人的mathjax代码</h2><ul>
+<li>查看网页源码。</li>
+<li>在公式上右键，<code>Show Math As</code>-&gt;<code>Tex Commande</code></li>
+</ul>
+<h2 id="重要注意事项"><a href="#重要注意事项" class="headerlink" title="重要注意事项"></a>重要注意事项</h2><ul>
+<li>在markdown中使用mathjax下标<code>_</code>时，记得一定要改写成<code>\_</code>，否则将会出现不能解析的情况。</li>
+</ul>
+<p>状态如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\overline&#123;x&#125;=\frac&#123;x_&#123;1&#125;+x_&#123;2&#125;…x_&#123;n&#125;&#125;&#123;n&#125;</div></pre></td></tr></table></figure>
+<p>$$<br>\overline{x}=\frac{x<em>{1}+x</em>{2}…x_{n}}{n}<br>$$</p>
+<p>修改后:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\overline&#123;x&#125;=\frac&#123;x\_&#123;1&#125;+x\_&#123;2&#125;…x\_&#123;n&#125;&#125;&#123;n&#125;</div></pre></td></tr></table></figure>
+<p>$$<br>\overline{x}=\frac{x_{1}+x_{2}…x_{n}}{n}<br>$$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mathjax号称&lt;code&gt;Beautiful math in all browsers&lt;/code&gt;，是展示数学公式方面的好工具。&lt;/p&gt;
+&lt;h2 id=&quot;如何编写Mathjax&quot;&gt;&lt;a href=&quot;#如何编写Mathjax&quot; class=&quot;headerlink&quot; ti
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://blog.kissingwolf.com/tags/hexo/"/>
+    
+      <category term="next" scheme="http://blog.kissingwolf.com/tags/next/"/>
+    
+      <category term="mathjax" scheme="http://blog.kissingwolf.com/tags/mathjax/"/>
+    
+  </entry>
   
   <entry>
     <title>深入浅出学统计-笔记</title>
