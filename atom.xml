@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2017-01-02T12:43:44.000Z</updated>
+  <updated>2017-01-09T07:48:37.000Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -16,11 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在CentOS7 VPS 上通过Docker 配置科学上网</title>
+    <link href="http://blog.kissingwolf.com/2017/01/09/%E5%9C%A8CentOS7-VPS-%E4%B8%8A%E9%80%9A%E8%BF%87Docker-%E9%85%8D%E7%BD%AE%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    <id>http://blog.kissingwolf.com/2017/01/09/在CentOS7-VPS-上通过Docker-配置科学上网/</id>
+    <published>2017-01-09T07:27:11.000Z</published>
+    <updated>2017-01-09T07:48:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>科学上网已经成为天朝 IT 从业人员必备的工作和生活技能。如果你不会就和时代脱节了！</p>
+<p>如果你和我一样有自己的VPS，那么你应该自建VPN用来科学上网，这样更加自由！</p>
+<p>配置VPN的方法很多，也比较复杂，有没有简单易行的如来神掌呢？当然有！如果你的VPS是Linux系统，并且比较现代，发行版不重要，内核版本很重要！因为我们的如来神掌是基于Docker的，所有你需要3.10以上的内核，然后装上Docker环境。</p>
+<p>如何安装和配置Docker ，你可以参看我的文档<a href="https://github.com/kissingwolf/docker-basic" target="_blank" rel="external">docker 基础</a> 。我这里就不重复了。</p>
+<p>安装好Docker后，接下来所有的配置和启动都是一个命令和一些参数就可以搞定。你改改密码就好了！</p>
+<p>首先记得配好你本地的防火墙和SElinux ，如何你不会，看看<a href="https://github.com/Uplooking-SH/UP100_ule" target="_blank" rel="external">尚观基础课程</a> 。</p>
+<p>首先配置pptp vpn ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">local_path_to_chap_secrets=./chap-secrets</div><div class="line">docker run -d --privileged --net=host -p 1723:1723 -v \ $&#123;local_path_to_chap_secrets&#125;:/etc/ppp/chap-secrets mobtitude/vpn-pptp</div></pre></td></tr></table></figure>
+<p><code>chap-secrets</code>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kevinzou * ooxx9527FUCKGFW *</div></pre></td></tr></table></figure>
+<p>接下来是ipsec vpn：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">My_PASSWD=&quot;ooxx9527FUCKGFW“</div><div class="line">My_NAME=&quot;kevinzou&quot;</div><div class="line">My_PSK=&quot;F5bF4848B7&quot;</div><div class="line">docker run -d -p 500:500/udp -p 4500:4500/udp -p 1701:1701/udp --privileged --restart=always -e VPN_PASSWORD=$My_PASSWD  -e VPN_USER=$My_NAME -e VPN_PSK=$My_PSK philplckthun/strongswan</div></pre></td></tr></table></figure>
+<p>如果pptp和ipsec还满足不了你的需求，可以考虑shadowsocks：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">SSPASSWORD=&quot;ooxx9527FUCKGFW&quot;</div><div class="line">docker run --restart=always -d -p 12356:1984 oddrationale/docker-shadowsocks -s 0.0.0.0 -p 1984 -k $SSPASSWORD -m aes-256-cfb</div></pre></td></tr></table></figure>
+<p>具体参数就不在这里细说了，PPTP方便简单，windows、Linux 和较老的mac都能用。IPSEC 主要是支持ios 10和macOS 10.12。 shadowsocks 支持<code>自动代理模式</code>比较省流量， 并且访问国内也快。</p>
+<p>好了，祝玩的开心。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;科学上网已经成为天朝 IT 从业人员必备的工作和生活技能。如果你不会就和时代脱节了！&lt;/p&gt;
+&lt;p&gt;如果你和我一样有自己的VPS，那么你应该自建VPN用来科学上网，这样更加自由！&lt;/p&gt;
+&lt;p&gt;配置VPN的方法很多，也比较复杂，有没有简单易行的如来神掌呢？当然有！如果你的V
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://blog.kissingwolf.com/tags/docker/"/>
+    
+      <category term="vpn" scheme="http://blog.kissingwolf.com/tags/vpn/"/>
+    
+      <category term="centos" scheme="http://blog.kissingwolf.com/tags/centos/"/>
+    
+  </entry>
+  
+  <entry>
     <title>练习的心态-如何培养耐心、专注和自律</title>
     <link href="http://blog.kissingwolf.com/2017/01/02/%E7%BB%83%E4%B9%A0%E7%9A%84%E5%BF%83%E6%80%81-%E5%A6%82%E4%BD%95%E5%9F%B9%E5%85%BB%E8%80%90%E5%BF%83%E3%80%81%E4%B8%93%E6%B3%A8%E5%92%8C%E8%87%AA%E5%BE%8B/"/>
     <id>http://blog.kissingwolf.com/2017/01/02/练习的心态-如何培养耐心、专注和自律/</id>
     <published>2017-01-02T12:42:39.000Z</published>
-    <updated>2017-01-02T12:43:44.000Z</updated>
+    <updated>2017-01-02T13:59:40.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="学习开始"><a href="#学习开始" class="headerlink" title="学习开始"></a>学习开始</h2><blockquote>
 <p>实现目标的方法和目标本身同等重要。</p>
