@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,next,mathjax," />
+  <meta name="keywords" content="python,ceph," />
 
 
 
@@ -86,37 +86,25 @@
 
 
 
-<meta name="description" content="Mathjax号称Beautiful math in all browsers，是展示数学公式方面的好工具。
-如何编写Mathjax
-Mathjax官方文档
-Mathjax在线生成器
-在Typora工具中，使用$$可以编排Mathjax
-
-NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，需要编辑主题的_config.xml文件
-12345# MathJax">
+<meta name="description" content="安装python-ceph库Ceph官方提供Python库来访问RBD，通过以下命令可以安装。
+1# yum install python-rbd python-rados -y
+创建 Image有三种可选的写法，个人推荐第三种
+简单流程12345678910111213141516171819import radosimport rbdcluster = rados.Rados(conffile">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo使用NexT主题时mathjax输入数学公式注意事项">
-<meta property="og:url" content="http://blog.kissingwolf.com/2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/index.html">
+<meta property="og:title" content="Python librbd 创建RBD image的三种方式">
+<meta property="og:url" content="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/index.html">
 <meta property="og:site_name" content="Kissingwolf's Blog">
-<meta property="og:description" content="Mathjax号称Beautiful math in all browsers，是展示数学公式方面的好工具。
-如何编写Mathjax
-Mathjax官方文档
-Mathjax在线生成器
-在Typora工具中，使用$$可以编排Mathjax
-
-NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，需要编辑主题的_config.xml文件
-12345# MathJax">
-<meta property="og:updated_time" content="2016-12-31T10:05:10.000Z">
+<meta property="og:description" content="安装python-ceph库Ceph官方提供Python库来访问RBD，通过以下命令可以安装。
+1# yum install python-rbd python-rados -y
+创建 Image有三种可选的写法，个人推荐第三种
+简单流程12345678910111213141516171819import radosimport rbdcluster = rados.Rados(conffile">
+<meta property="og:updated_time" content="2017-01-12T03:02:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo使用NexT主题时mathjax输入数学公式注意事项">
-<meta name="twitter:description" content="Mathjax号称Beautiful math in all browsers，是展示数学公式方面的好工具。
-如何编写Mathjax
-Mathjax官方文档
-Mathjax在线生成器
-在Typora工具中，使用$$可以编排Mathjax
-
-NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，需要编辑主题的_config.xml文件
-12345# MathJax">
+<meta name="twitter:title" content="Python librbd 创建RBD image的三种方式">
+<meta name="twitter:description" content="安装python-ceph库Ceph官方提供Python库来访问RBD，通过以下命令可以安装。
+1# yum install python-rbd python-rados -y
+创建 Image有三种可选的写法，个人推荐第三种
+简单流程12345678910111213141516171819import radosimport rbdcluster = rados.Rados(conffile">
 
 
 
@@ -144,13 +132,13 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
 
 
 
-  <link rel="canonical" href="http://blog.kissingwolf.com/2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/"/>
+  <link rel="canonical" href="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/"/>
 
 
 
 
 
-  <title> Hexo使用NexT主题时mathjax输入数学公式注意事项 | Kissingwolf's Blog </title>
+  <title> Python librbd 创建RBD image的三种方式 | Kissingwolf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -300,7 +288,7 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Kevin Zou">
@@ -324,7 +312,7 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
             
             
               
-                Hexo使用NexT主题时mathjax输入数学公式注意事项
+                Python librbd 创建RBD image的三种方式
               
             
           </h1>
@@ -337,8 +325,8 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-31T17:33:14+08:00">
-                2016-12-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T10:47:08+08:00">
+                2017-01-12
               </time>
             
 
@@ -353,8 +341,8 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/" itemprop="commentCount"></span>
+                <a href="/2017/01/12/Python-librbd-创建RBD-image的三种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/12/Python-librbd-创建RBD-image的三种方式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,28 +368,12 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
       
 
       
-        <p>Mathjax号称<code>Beautiful math in all browsers</code>，是展示数学公式方面的好工具。</p>
-<h2 id="如何编写Mathjax"><a href="#如何编写Mathjax" class="headerlink" title="如何编写Mathjax"></a>如何编写Mathjax</h2><ul>
-<li><a href="http://docs.mathjax.org/en/latest/start.html" target="_blank" rel="external">Mathjax官方文档</a></li>
-<li><a href="https://www.codecogs.com/latex/eqneditor.php?lang=zh-cn" target="_blank" rel="external">Mathjax在线生成器</a></li>
-<li>在<a href="http://www.typora.io/" target="_blank" rel="external">Typora</a>工具中，使用<code>$$</code>可以编排Mathjax</li>
-</ul>
-<h2 id="NexT打开Mathjax支持"><a href="#NexT打开Mathjax支持" class="headerlink" title="NexT打开Mathjax支持"></a>NexT打开Mathjax支持</h2><p>默认Hexo的NexT主题是没有打开Mathjax支持的，需要编辑主题的<code>_config.xml</code>文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># MathJax Support</div><div class="line">mathjax:</div><div class="line">  enable: false</div><div class="line">  per_page: false</div><div class="line">  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</div></pre></td></tr></table></figure>
-<p>将<code>enable：false</code>设为<code>enable：true</code>。</p>
-<h2 id="复制别人的mathjax代码"><a href="#复制别人的mathjax代码" class="headerlink" title="复制别人的mathjax代码"></a>复制别人的mathjax代码</h2><ul>
-<li>查看网页源码。</li>
-<li>在公式上右键，<code>Show Math As</code>-&gt;<code>Tex Commande</code></li>
-</ul>
-<h2 id="重要注意事项"><a href="#重要注意事项" class="headerlink" title="重要注意事项"></a>重要注意事项</h2><ul>
-<li>在markdown中使用mathjax下标<code>_</code>时，记得一定要改写成<code>\_</code>，否则将会出现不能解析的情况。</li>
-</ul>
-<p>状态如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\overline&#123;x&#125;=\frac&#123;x_&#123;1&#125;+x_&#123;2&#125;…x_&#123;n&#125;&#125;&#123;n&#125;</div></pre></td></tr></table></figure>
-<p>$$<br>\overline{x}=\frac{x<em>{1}+x</em>{2}…x_{n}}{n}<br>$$</p>
-<p>修改后:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\overline&#123;x&#125;=\frac&#123;x\_&#123;1&#125;+x\_&#123;2&#125;…x\_&#123;n&#125;&#125;&#123;n&#125;</div></pre></td></tr></table></figure>
-<p>$$<br>\overline{x}=\frac{x_{1}+x_{2}…x_{n}}{n}<br>$$</p>
+        <h1 id="安装python-ceph库"><a href="#安装python-ceph库" class="headerlink" title="安装python-ceph库"></a>安装python-ceph库</h1><p>Ceph官方提供Python库来访问RBD，通过以下命令可以安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># yum install python-rbd python-rados -y</div></pre></td></tr></table></figure>
+<h1 id="创建-Image"><a href="#创建-Image" class="headerlink" title="创建 Image"></a>创建 Image</h1><p>有三种可选的写法，个人推荐第三种</p>
+<h2 id="简单流程"><a href="#简单流程" class="headerlink" title="简单流程"></a>简单流程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> rados</div><div class="line"><span class="keyword">import</span> rbd</div><div class="line"></div><div class="line">cluster = rados.Rados(conffile=<span class="string">'/etc/ceph/ceph.conf'</span>)</div><div class="line">cluster.connect()</div><div class="line">ioctx = cluster.open_ioctx(<span class="string">'rbd'</span>)</div><div class="line"></div><div class="line">rbd_inst = rbd.RBD()</div><div class="line">size = <span class="number">1024</span>**<span class="number">3</span></div><div class="line">image_name = <span class="string">"test_image"</span></div><div class="line">rbd_inst.create(ioctx, image_name, size)</div><div class="line"></div><div class="line">image = rbd.Image(ioctx, image_name)</div><div class="line">data = <span class="string">'foo'</span> * <span class="number">200</span></div><div class="line">image.write(data, <span class="number">0</span>)</div><div class="line"></div><div class="line">image.close()</div><div class="line">ioctx.close()</div><div class="line">cluster.shutdown()</div></pre></td></tr></table></figure>
+<h2 id="Try-Finally-方式"><a href="#Try-Finally-方式" class="headerlink" title="Try-Finally 方式"></a>Try-Finally 方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> rados</div><div class="line"><span class="keyword">import</span> rbd</div><div class="line"></div><div class="line">cluster = rados.Rados(conffile=<span class="string">'/etc/ceph/ceph.conf'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    ioctx = cluster.open_ioctx(<span class="string">'rbd'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        rbd_inst = rbd.RBD()</div><div class="line">        size = <span class="number">1024</span>**<span class="number">3</span></div><div class="line">    image_name = <span class="string">"test_image"</span></div><div class="line">        rbd_inst.create(ioctx, image_name, size)</div><div class="line">        image = rbd.Image(ioctx, image_name)</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            data = <span class="string">'foo'</span> * <span class="number">200</span></div><div class="line">            image.write(data, <span class="number">0</span>)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            image.close()</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        ioctx.close()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    cluster.shutdown()</div></pre></td></tr></table></figure>
+<h2 id="With-As-方式"><a href="#With-As-方式" class="headerlink" title="With-As 方式"></a>With-As 方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> rados.Rados(conffile=<span class="string">'/etc/ceph/ceph.conf'</span>) <span class="keyword">as</span> cluster:</div><div class="line">    <span class="keyword">with</span> cluster.open_ioctx(<span class="string">'rbd'</span>) <span class="keyword">as</span> ioctx:</div><div class="line">        rbd_inst = rbd.RBD()</div><div class="line">        size = <span class="number">1024</span>**<span class="number">3</span></div><div class="line">    image_name = <span class="string">"test_image"</span></div><div class="line">        rbd_inst.create(ioctx, image_name, size)</div><div class="line">        <span class="keyword">with</span> rbd.Image(ioctx, image_name) <span class="keyword">as</span> image:</div><div class="line">            data = <span class="string">'foo'</span> * <span class="number">200</span></div><div class="line">            image.write(data, <span class="number">0</span>)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -425,11 +397,9 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/next/" rel="tag"># next</a>
-          
-            <a href="/tags/mathjax/" rel="tag"># mathjax</a>
+            <a href="/tags/ceph/" rel="tag"># ceph</a>
           
         </div>
       
@@ -438,8 +408,8 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/31/深入浅出学统计-笔记/" rel="next" title="深入浅出学统计-笔记">
-                <i class="fa fa-chevron-left"></i> 深入浅出学统计-笔记
+              <a href="/2017/01/09/在CentOS7-VPS-上通过Docker-配置科学上网/" rel="next" title="在CentOS7 VPS 上通过Docker 配置科学上网">
+                <i class="fa fa-chevron-left"></i> 在CentOS7 VPS 上通过Docker 配置科学上网
               </a>
             
           </div>
@@ -447,10 +417,6 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/02/练习的心态-如何培养耐心、专注和自律/" rel="prev" title="练习的心态-如何培养耐心、专注和自律">
-                练习的心态-如何培养耐心、专注和自律 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,8 +442,8 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/"
-           data-title="Hexo使用NexT主题时mathjax输入数学公式注意事项" data-url="http://blog.kissingwolf.com/2016/12/31/Hexo使用NexT主题时mathjax输入数学公式注意事项/">
+      <div class="ds-thread" data-thread-key="2017/01/12/Python-librbd-创建RBD-image的三种方式/"
+           data-title="Python librbd 创建RBD image的三种方式" data-url="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/">
       </div>
     
   </div>
@@ -596,7 +562,7 @@ NexT打开Mathjax支持默认Hexo的NexT主题是没有打开Mathjax支持的，
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何编写Mathjax"><span class="nav-number">1.</span> <span class="nav-text">如何编写Mathjax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT打开Mathjax支持"><span class="nav-number">2.</span> <span class="nav-text">NexT打开Mathjax支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制别人的mathjax代码"><span class="nav-number">3.</span> <span class="nav-text">复制别人的mathjax代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要注意事项"><span class="nav-number">4.</span> <span class="nav-text">重要注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装python-ceph库"><span class="nav-number">1.</span> <span class="nav-text">安装python-ceph库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Image"><span class="nav-number">2.</span> <span class="nav-text">创建 Image</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单流程"><span class="nav-number">2.1.</span> <span class="nav-text">简单流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Finally-方式"><span class="nav-number">2.2.</span> <span class="nav-text">Try-Finally 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#With-As-方式"><span class="nav-number">2.3.</span> <span class="nav-text">With-As 方式</span></a></li></ol></li></ol></div>
             
 
           </div>
