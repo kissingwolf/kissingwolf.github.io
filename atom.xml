@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2017-01-12T03:02:56.000Z</updated>
+  <updated>2017-03-13T02:42:53.000Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -14,6 +14,107 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>虚拟机故障定位过程</title>
+    <link href="http://blog.kissingwolf.com/2017/03/13/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E8%BF%87%E7%A8%8B/"/>
+    <id>http://blog.kissingwolf.com/2017/03/13/虚拟机故障定位过程/</id>
+    <published>2017-03-13T02:34:03.000Z</published>
+    <updated>2017-03-13T02:42:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近一次虚拟机运行故障，记录一下分析思路和过程。</p>
+<p>首先是现象，故障事件描述如下：</p>
+<p>2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。</p>
+<p>虚拟机重启后业务逐步恢复，需要分析KVM无法登陆的原因。</p>
+<p>问题分析过程：</p>
+<ol>
+<li>首先登陆虚拟机N和其宿主机H，将其上的/var/log/messages日志文件复制到/tmp/message目录下，分析日志内容。</li>
+<li>在虚拟机N上的messages文件中发现大量干扰日志，格式类似如下内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2017-03-07 03:28:40.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:40 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">2017-03-07 03:28:42.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:42 watchdog.go:55 Watchdog Sam's alive</div><div class="line">2017-03-07 03:28:44.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:44 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">2017-03-07 03:28:46.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:46 watchdog.go:55 Watchdog Sam's alive</div></pre></td></tr></table></figure>
+<p>   所以使用grep将干扰日志项过滤，并显示日志行号方便定位：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat -nA messages | grep -v watchdog.go |less</span></div></pre></td></tr></table></figure>
+<p>  发现确切的虚拟机故障时间和重启成功时间，相关内容日志如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">18473  2017-03-07 13:30:01.184 info systemd[1]: Removed slice user-0.slice.$</div><div class="line">18474  2017-03-07 13:30:01.184 info systemd[1]: Stopping user-0.slice.$</div><div class="line">18711  ^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@2017-03-07 15:45:26.028 info rsyslogd: [origin software=<span class="string">"rsyslogd"</span> swVersion=<span class="string">"7.4.7"</span> x-pid=<span class="string">"533"</span> x-info=<span class="string">"http://www.rsyslog.com"</span>] start$</div><div class="line">18712  2017-03-07 15:45:25.971 err rsyslogd-2181: <span class="variable">$WorkDirectory</span>: /var/spool/rsyslog can not be accessed, probably does not exist - directive ignored [try http://www.rsyslog.com/e/2181 ]$</div><div class="line">18713  2017-03-07 15:45:26.017 err rsyslogd-2307: warning: ~ action is deprecated, consider using the <span class="string">'stop'</span> statement instead [try http://www.rsyslog.com/e/2307 ]$</div></pre></td></tr></table></figure>
+<p>   其中空格分割的第一部分为message文件中条目的原始行号。我们为了快速定位问题时间，使用了过滤干扰项，但分析故障时可能还需要查看原始文件，这个原始行号就十分重要了。</p>
+<ol>
+<li>在检查日志虚拟机xg-account-vore-srv-10日志时，我们定位到了13：37后此虚拟机出现了故障，然后到15：45我们重新启动了这个虚拟机：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-03-07 13:37:52.240 info watchdog.lnx[16616]: INFO 2017-03-07 13:37:52 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@2017-03-07 15:45:26.028 info rsyslogd: [origin software="rsyslogd" swVersion="7.4.7" x-pid="533" x-info="http://www.rsyslog.com"] start</div><div class="line">2017-03-07 15:45:25.971 err rsyslogd-2181: $WorkDirectory: /var/spool/rsyslog can not be accessed, probably does not exist - directive ignored [try http://www.rsyslog.com/e/2181 ]</div><div class="line">2017-03-07 15:45:26.017 err rsyslogd-2307: warning: ~ action is deprecated, consider using the 'stop<span class="string">' statement instead [try http://www.rsyslog.com/e/2307 ]</span></div></pre></td></tr></table></figure>
+<p>   因此，我们需要定位宿主机H上相同时间段，并查看在此时间段内出现和什么故障或报出了什么错误。</p>
+<p>   我们在H上的message日志文件中发现了同时段报出的错误日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Mar  7 13:38:04 H kernel: EPT: Misconfiguration.</div><div class="line">Mar  7 13:38:04 H kernel: EPT: GPA: 0x108ba4538</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x84c236107 level 4</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x10515c7107 level 3</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0xde4657107 level 2</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x1028125d77 level 1</div></pre></td></tr></table></figure>
+<p>   其中关键字段和术语：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPT</td>
+<td>Extended Page Table</td>
+</tr>
+<tr>
+<td>GPA</td>
+<td>Guest Physical address</td>
+</tr>
+</tbody>
+</table>
+<p>​    可以看出此错误和KVM虚拟化有关。</p>
+<p>​    进一步查看当时的zstack-agent日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-03-07 13:38:04,415 DEBUG [vm_plugin] ignore event[Suspended] of the vm[uuid:2c521dfe81b44151b25ff8e4b852fa4e]</div><div class="line">2017-03-07 15:45:08,554 DEBUG [vm_plugin] ignore event[Stopped] <span class="keyword">for</span> the vm[uuid:2c521dfe81b44151b25ff8e4b852fa4e], this operation is from ZStack itself</div></pre></td></tr></table></figure>
+<p>   发现有虚拟机挂起！</p>
+<ol>
+<li>综上，可以断定是由于虚拟机挂起导致的问题。那么为什么会挂起呢？我们借助google可以查找关键字</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kernel: EPT: Misconfiguration.</div></pre></td></tr></table></figure>
+<p>可以找到相关的条目，其中有RedHat 知识库中的条目：</p>
+<p><a href="https://access.redhat.com/solutions/1758133" target="_blank" rel="external">https://access.redhat.com/solutions/1758133</a></p>
+<p>此问题是一个Bug，RedHat知识库描述如下：</p>
+<blockquote>
+<p>Root Cause</p>
+<p>A MMIO Page Fault related bug in KVM causes this. This is a Hypervisor side bug and any VM OS might hit it.</p>
+<p>The probability of hitting it appears to be quite low (many VMs running for days).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">MMIO</td>
+<td style="text-align:left">Memory-mapped I/O</td>
+</tr>
+</tbody>
+</table>
+<p> 这不是一个常见的错误，RedHat 建议升级内核解决这个Bug：</p>
+<blockquote>
+<p>Resolution</p>
+<ul>
+<li>RHEL 7.3: Upgrade to <code>kernel-3.10.0-514.el7</code> from <a href="https://rhn.redhat.com/errata/RHSA-2016-2574.html" target="_blank" rel="external">Errata RHSA-2016:2574</a> or later</li>
+<li>RHEL 7.2.z: Upgrade to <code>kernel-3.10.0-327.3.1.el7</code> from <a href="https://rhn.redhat.com/errata/RHSA-2015-2552.html" target="_blank" rel="external">Errata RHSA-2015:2552</a> or later</li>
+</ul>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近一次虚拟机运行故障，记录一下分析思路和过程。&lt;/p&gt;
+&lt;p&gt;首先是现象，故障事件描述如下：&lt;/p&gt;
+&lt;p&gt;2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="kvm" scheme="http://blog.kissingwolf.com/tags/kvm/"/>
+    
+  </entry>
   
   <entry>
     <title>Python librbd 创建RBD image的三种方式</title>

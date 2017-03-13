@@ -280,6 +280,208 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2017/03/13/虚拟机故障定位过程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/13/虚拟机故障定位过程/" itemprop="url">
+                  虚拟机故障定位过程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-13T10:34:03+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/13/虚拟机故障定位过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/虚拟机故障定位过程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近一次虚拟机运行故障，记录一下分析思路和过程。</p>
+<p>首先是现象，故障事件描述如下：</p>
+<p>2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。</p>
+<p>虚拟机重启后业务逐步恢复，需要分析KVM无法登陆的原因。</p>
+<p>问题分析过程：</p>
+<ol>
+<li>首先登陆虚拟机N和其宿主机H，将其上的/var/log/messages日志文件复制到/tmp/message目录下，分析日志内容。</li>
+<li>在虚拟机N上的messages文件中发现大量干扰日志，格式类似如下内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2017-03-07 03:28:40.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:40 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">2017-03-07 03:28:42.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:42 watchdog.go:55 Watchdog Sam's alive</div><div class="line">2017-03-07 03:28:44.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:44 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">2017-03-07 03:28:46.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:46 watchdog.go:55 Watchdog Sam's alive</div></pre></td></tr></table></figure>
+<p>   所以使用grep将干扰日志项过滤，并显示日志行号方便定位：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat -nA messages | grep -v watchdog.go |less</span></div></pre></td></tr></table></figure>
+<p>  发现确切的虚拟机故障时间和重启成功时间，相关内容日志如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">18473  2017-03-07 13:30:01.184 info systemd[1]: Removed slice user-0.slice.$</div><div class="line">18474  2017-03-07 13:30:01.184 info systemd[1]: Stopping user-0.slice.$</div><div class="line">18711  ^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@2017-03-07 15:45:26.028 info rsyslogd: [origin software=<span class="string">"rsyslogd"</span> swVersion=<span class="string">"7.4.7"</span> x-pid=<span class="string">"533"</span> x-info=<span class="string">"http://www.rsyslog.com"</span>] start$</div><div class="line">18712  2017-03-07 15:45:25.971 err rsyslogd-2181: <span class="variable">$WorkDirectory</span>: /var/spool/rsyslog can not be accessed, probably does not exist - directive ignored [try http://www.rsyslog.com/e/2181 ]$</div><div class="line">18713  2017-03-07 15:45:26.017 err rsyslogd-2307: warning: ~ action is deprecated, consider using the <span class="string">'stop'</span> statement instead [try http://www.rsyslog.com/e/2307 ]$</div></pre></td></tr></table></figure>
+<p>   其中空格分割的第一部分为message文件中条目的原始行号。我们为了快速定位问题时间，使用了过滤干扰项，但分析故障时可能还需要查看原始文件，这个原始行号就十分重要了。</p>
+<ol>
+<li>在检查日志虚拟机xg-account-vore-srv-10日志时，我们定位到了13：37后此虚拟机出现了故障，然后到15：45我们重新启动了这个虚拟机：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-03-07 13:37:52.240 info watchdog.lnx[16616]: INFO 2017-03-07 13:37:52 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@2017-03-07 15:45:26.028 info rsyslogd: [origin software="rsyslogd" swVersion="7.4.7" x-pid="533" x-info="http://www.rsyslog.com"] start</div><div class="line">2017-03-07 15:45:25.971 err rsyslogd-2181: $WorkDirectory: /var/spool/rsyslog can not be accessed, probably does not exist - directive ignored [try http://www.rsyslog.com/e/2181 ]</div><div class="line">2017-03-07 15:45:26.017 err rsyslogd-2307: warning: ~ action is deprecated, consider using the 'stop<span class="string">' statement instead [try http://www.rsyslog.com/e/2307 ]</span></div></pre></td></tr></table></figure>
+<p>   因此，我们需要定位宿主机H上相同时间段，并查看在此时间段内出现和什么故障或报出了什么错误。</p>
+<p>   我们在H上的message日志文件中发现了同时段报出的错误日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Mar  7 13:38:04 H kernel: EPT: Misconfiguration.</div><div class="line">Mar  7 13:38:04 H kernel: EPT: GPA: 0x108ba4538</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x84c236107 level 4</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x10515c7107 level 3</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0xde4657107 level 2</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x1028125d77 level 1</div></pre></td></tr></table></figure>
+<p>   其中关键字段和术语：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPT</td>
+<td>Extended Page Table</td>
+</tr>
+<tr>
+<td>GPA</td>
+<td>Guest Physical address</td>
+</tr>
+</tbody>
+</table>
+<p>​    可以看出此错误和KVM虚拟化有关。</p>
+<p>​    进一步查看当时的zstack-agent日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-03-07 13:38:04,415 DEBUG [vm_plugin] ignore event[Suspended] of the vm[uuid:2c521dfe81b44151b25ff8e4b852fa4e]</div><div class="line">2017-03-07 15:45:08,554 DEBUG [vm_plugin] ignore event[Stopped] <span class="keyword">for</span> the vm[uuid:2c521dfe81b44151b25ff8e4b852fa4e], this operation is from ZStack itself</div></pre></td></tr></table></figure>
+<p>   发现有虚拟机挂起！</p>
+<ol>
+<li>综上，可以断定是由于虚拟机挂起导致的问题。那么为什么会挂起呢？我们借助google可以查找关键字</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kernel: EPT: Misconfiguration.</div></pre></td></tr></table></figure>
+<p>可以找到相关的条目，其中有RedHat 知识库中的条目：</p>
+<p><a href="https://access.redhat.com/solutions/1758133" target="_blank" rel="external">https://access.redhat.com/solutions/1758133</a></p>
+<p>此问题是一个Bug，RedHat知识库描述如下：</p>
+<blockquote>
+<p>Root Cause</p>
+<p>A MMIO Page Fault related bug in KVM causes this. This is a Hypervisor side bug and any VM OS might hit it.</p>
+<p>The probability of hitting it appears to be quite low (many VMs running for days).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">MMIO</td>
+<td style="text-align:left">Memory-mapped I/O</td>
+</tr>
+</tbody>
+</table>
+<p> 这不是一个常见的错误，RedHat 建议升级内核解决这个Bug：</p>
+<blockquote>
+<p>Resolution</p>
+<ul>
+<li>RHEL 7.3: Upgrade to <code>kernel-3.10.0-514.el7</code> from <a href="https://rhn.redhat.com/errata/RHSA-2016-2574.html" target="_blank" rel="external">Errata RHSA-2016:2574</a> or later</li>
+<li>RHEL 7.2.z: Upgrade to <code>kernel-3.10.0-327.3.1.el7</code> from <a href="https://rhn.redhat.com/errata/RHSA-2015-2552.html" target="_blank" rel="external">Errata RHSA-2015:2552</a> or later</li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1793,136 +1995,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2016/12/08/编写使用LVM快照备份Mysql的脚本/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Kevin Zou">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Kissingwolf's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/08/编写使用LVM快照备份Mysql的脚本/" itemprop="url">
-                  编写使用LVM快照备份Mysql的脚本
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-08T23:08:39+08:00">
-                2016-12-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/08/编写使用LVM快照备份Mysql的脚本/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/编写使用LVM快照备份Mysql的脚本/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天北京的同事问如何编写使用LVM快照备份Mysql的脚本。</p>
-<p>想来还是很简单的，主要是有一个坑，mysql 中“LOCK TABLES” 的会话是不能中断的，如果脚本中先执行mysql 锁语句，然后断开连接去执行lvm快照的创建，其实数据库是没有锁住的。</p>
-<p>听到这个问题，突然灵光一现，想到其实是多进程问题，要在锁住数据库的同时执行lvm快照创建备份操作。于是写了如下测试代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">mkfifo /tmp/mypipo</div><div class="line">mysql mydb &lt;/tmp/mypipe &amp;</div><div class="line">(</div><div class="line">  echo &quot;LOCK TABLES mytable READ ;&quot; 1&gt;&amp;6 </div><div class="line">  echo &quot;Create LVM snapshot &quot;</div><div class="line">  echo &quot;UNLOCK  tables;&quot; 1&gt;&amp;6</div><div class="line">) 6&gt; /tmp/myspipe</div></pre></td></tr></table></figure>
-<p>然后有想起来mysql中是有一个SYSTEM指令的，可以执行外部系统命令，就想到了另外一种做法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">mysql &lt;&lt;ENF</div><div class="line">LOCK TABLES mytable READ;</div><div class="line">SYSTEM /path/to/create_lvm_snapshot.sh</div><div class="line">UNLOCK TABLES;</div><div class="line">ENF</div></pre></td></tr></table></figure>
-<p>北京同事选了第二种方法。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1968,7 +2040,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1978,7 +2050,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1996,6 +2068,35 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/kissingwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/kissingwolf" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/kissingwolf" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
           
         </div>
 

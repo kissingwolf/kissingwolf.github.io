@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,ceph," />
+  <meta name="keywords" content="kvm," />
 
 
 
@@ -86,25 +86,34 @@
 
 
 
-<meta name="description" content="安装python-ceph库Ceph官方提供Python库来访问RBD，通过以下命令可以安装。
-1# yum install python-rbd python-rados -y
-创建 Image有三种可选的写法，个人推荐第三种
-简单流程12345678910111213141516171819import radosimport rbdcluster = rados.Rados(conffile">
+<meta name="description" content="最近一次虚拟机运行故障，记录一下分析思路和过程。
+首先是现象，故障事件描述如下：
+2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。
+虚拟机重启后业务逐步恢复，需要分析KVM无法登陆的原因。
+问题分析过程：
+
+首先登陆虚拟机N和其宿主机H，将其上的/var/log/messages日志文件复制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python librbd 创建RBD image的三种方式">
-<meta property="og:url" content="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/index.html">
+<meta property="og:title" content="虚拟机故障定位过程">
+<meta property="og:url" content="http://blog.kissingwolf.com/2017/03/13/虚拟机故障定位过程/index.html">
 <meta property="og:site_name" content="Kissingwolf's Blog">
-<meta property="og:description" content="安装python-ceph库Ceph官方提供Python库来访问RBD，通过以下命令可以安装。
-1# yum install python-rbd python-rados -y
-创建 Image有三种可选的写法，个人推荐第三种
-简单流程12345678910111213141516171819import radosimport rbdcluster = rados.Rados(conffile">
-<meta property="og:updated_time" content="2017-01-12T03:02:56.000Z">
+<meta property="og:description" content="最近一次虚拟机运行故障，记录一下分析思路和过程。
+首先是现象，故障事件描述如下：
+2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。
+虚拟机重启后业务逐步恢复，需要分析KVM无法登陆的原因。
+问题分析过程：
+
+首先登陆虚拟机N和其宿主机H，将其上的/var/log/messages日志文件复制">
+<meta property="og:updated_time" content="2017-03-13T02:42:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python librbd 创建RBD image的三种方式">
-<meta name="twitter:description" content="安装python-ceph库Ceph官方提供Python库来访问RBD，通过以下命令可以安装。
-1# yum install python-rbd python-rados -y
-创建 Image有三种可选的写法，个人推荐第三种
-简单流程12345678910111213141516171819import radosimport rbdcluster = rados.Rados(conffile">
+<meta name="twitter:title" content="虚拟机故障定位过程">
+<meta name="twitter:description" content="最近一次虚拟机运行故障，记录一下分析思路和过程。
+首先是现象，故障事件描述如下：
+2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。
+虚拟机重启后业务逐步恢复，需要分析KVM无法登陆的原因。
+问题分析过程：
+
+首先登陆虚拟机N和其宿主机H，将其上的/var/log/messages日志文件复制">
 
 
 
@@ -132,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/"/>
+  <link rel="canonical" href="http://blog.kissingwolf.com/2017/03/13/虚拟机故障定位过程/"/>
 
 
 
 
 
-  <title> Python librbd 创建RBD image的三种方式 | Kissingwolf's Blog </title>
+  <title> 虚拟机故障定位过程 | Kissingwolf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -288,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2017/03/13/虚拟机故障定位过程/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Kevin Zou">
@@ -312,7 +321,7 @@
             
             
               
-                Python librbd 创建RBD image的三种方式
+                虚拟机故障定位过程
               
             
           </h1>
@@ -325,8 +334,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T10:47:08+08:00">
-                2017-01-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-13T10:34:03+08:00">
+                2017-03-13
               </time>
             
 
@@ -341,8 +350,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/01/12/Python-librbd-创建RBD-image的三种方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/12/Python-librbd-创建RBD-image的三种方式/" itemprop="commentCount"></span>
+                <a href="/2017/03/13/虚拟机故障定位过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/虚拟机故障定位过程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,12 +377,85 @@
       
 
       
-        <h1 id="安装python-ceph库"><a href="#安装python-ceph库" class="headerlink" title="安装python-ceph库"></a>安装python-ceph库</h1><p>Ceph官方提供Python库来访问RBD，通过以下命令可以安装。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># yum install python-rbd python-rados -y</div></pre></td></tr></table></figure>
-<h1 id="创建-Image"><a href="#创建-Image" class="headerlink" title="创建 Image"></a>创建 Image</h1><p>有三种可选的写法，个人推荐第三种</p>
-<h2 id="简单流程"><a href="#简单流程" class="headerlink" title="简单流程"></a>简单流程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> rados</div><div class="line"><span class="keyword">import</span> rbd</div><div class="line"></div><div class="line">cluster = rados.Rados(conffile=<span class="string">'/etc/ceph/ceph.conf'</span>)</div><div class="line">cluster.connect()</div><div class="line">ioctx = cluster.open_ioctx(<span class="string">'rbd'</span>)</div><div class="line"></div><div class="line">rbd_inst = rbd.RBD()</div><div class="line">size = <span class="number">1024</span>**<span class="number">3</span></div><div class="line">image_name = <span class="string">"test_image"</span></div><div class="line">rbd_inst.create(ioctx, image_name, size)</div><div class="line"></div><div class="line">image = rbd.Image(ioctx, image_name)</div><div class="line">data = <span class="string">'foo'</span> * <span class="number">200</span></div><div class="line">image.write(data, <span class="number">0</span>)</div><div class="line"></div><div class="line">image.close()</div><div class="line">ioctx.close()</div><div class="line">cluster.shutdown()</div></pre></td></tr></table></figure>
-<h2 id="Try-Finally-方式"><a href="#Try-Finally-方式" class="headerlink" title="Try-Finally 方式"></a>Try-Finally 方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> rados</div><div class="line"><span class="keyword">import</span> rbd</div><div class="line"></div><div class="line">cluster = rados.Rados(conffile=<span class="string">'/etc/ceph/ceph.conf'</span>)</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    ioctx = cluster.open_ioctx(<span class="string">'rbd'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        rbd_inst = rbd.RBD()</div><div class="line">        size = <span class="number">1024</span>**<span class="number">3</span></div><div class="line">    image_name = <span class="string">"test_image"</span></div><div class="line">        rbd_inst.create(ioctx, image_name, size)</div><div class="line">        image = rbd.Image(ioctx, image_name)</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            data = <span class="string">'foo'</span> * <span class="number">200</span></div><div class="line">            image.write(data, <span class="number">0</span>)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            image.close()</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        ioctx.close()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    cluster.shutdown()</div></pre></td></tr></table></figure>
-<h2 id="With-As-方式"><a href="#With-As-方式" class="headerlink" title="With-As 方式"></a>With-As 方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> rados.Rados(conffile=<span class="string">'/etc/ceph/ceph.conf'</span>) <span class="keyword">as</span> cluster:</div><div class="line">    <span class="keyword">with</span> cluster.open_ioctx(<span class="string">'rbd'</span>) <span class="keyword">as</span> ioctx:</div><div class="line">        rbd_inst = rbd.RBD()</div><div class="line">        size = <span class="number">1024</span>**<span class="number">3</span></div><div class="line">    image_name = <span class="string">"test_image"</span></div><div class="line">        rbd_inst.create(ioctx, image_name, size)</div><div class="line">        <span class="keyword">with</span> rbd.Image(ioctx, image_name) <span class="keyword">as</span> image:</div><div class="line">            data = <span class="string">'foo'</span> * <span class="number">200</span></div><div class="line">            image.write(data, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+        <p>最近一次虚拟机运行故障，记录一下分析思路和过程。</p>
+<p>首先是现象，故障事件描述如下：</p>
+<p>2017年3月7日15：40左右，业务报告“虚拟机N”上的服务没有响应了，业务运维发现此KVM虚拟机无法登陆，所有通知基础运维并从新启动了这台KVM虚拟机。</p>
+<p>虚拟机重启后业务逐步恢复，需要分析KVM无法登陆的原因。</p>
+<p>问题分析过程：</p>
+<ol>
+<li>首先登陆虚拟机N和其宿主机H，将其上的/var/log/messages日志文件复制到/tmp/message目录下，分析日志内容。</li>
+<li>在虚拟机N上的messages文件中发现大量干扰日志，格式类似如下内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2017-03-07 03:28:40.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:40 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">2017-03-07 03:28:42.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:42 watchdog.go:55 Watchdog Sam's alive</div><div class="line">2017-03-07 03:28:44.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:44 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">2017-03-07 03:28:46.240 info watchdog.lnx[16616]: INFO 2017-03-07 03:28:46 watchdog.go:55 Watchdog Sam's alive</div></pre></td></tr></table></figure>
+<p>   所以使用grep将干扰日志项过滤，并显示日志行号方便定位：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat -nA messages | grep -v watchdog.go |less</span></div></pre></td></tr></table></figure>
+<p>  发现确切的虚拟机故障时间和重启成功时间，相关内容日志如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">18473  2017-03-07 13:30:01.184 info systemd[1]: Removed slice user-0.slice.$</div><div class="line">18474  2017-03-07 13:30:01.184 info systemd[1]: Stopping user-0.slice.$</div><div class="line">18711  ^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@2017-03-07 15:45:26.028 info rsyslogd: [origin software=<span class="string">"rsyslogd"</span> swVersion=<span class="string">"7.4.7"</span> x-pid=<span class="string">"533"</span> x-info=<span class="string">"http://www.rsyslog.com"</span>] start$</div><div class="line">18712  2017-03-07 15:45:25.971 err rsyslogd-2181: <span class="variable">$WorkDirectory</span>: /var/spool/rsyslog can not be accessed, probably does not exist - directive ignored [try http://www.rsyslog.com/e/2181 ]$</div><div class="line">18713  2017-03-07 15:45:26.017 err rsyslogd-2307: warning: ~ action is deprecated, consider using the <span class="string">'stop'</span> statement instead [try http://www.rsyslog.com/e/2307 ]$</div></pre></td></tr></table></figure>
+<p>   其中空格分割的第一部分为message文件中条目的原始行号。我们为了快速定位问题时间，使用了过滤干扰项，但分析故障时可能还需要查看原始文件，这个原始行号就十分重要了。</p>
+<ol>
+<li>在检查日志虚拟机xg-account-vore-srv-10日志时，我们定位到了13：37后此虚拟机出现了故障，然后到15：45我们重新启动了这个虚拟机：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-03-07 13:37:52.240 info watchdog.lnx[16616]: INFO 2017-03-07 13:37:52 watchdog.go:55 Watchdog Sam<span class="string">'s alive</span></div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@</div><div class="line">^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@2017-03-07 15:45:26.028 info rsyslogd: [origin software="rsyslogd" swVersion="7.4.7" x-pid="533" x-info="http://www.rsyslog.com"] start</div><div class="line">2017-03-07 15:45:25.971 err rsyslogd-2181: $WorkDirectory: /var/spool/rsyslog can not be accessed, probably does not exist - directive ignored [try http://www.rsyslog.com/e/2181 ]</div><div class="line">2017-03-07 15:45:26.017 err rsyslogd-2307: warning: ~ action is deprecated, consider using the 'stop<span class="string">' statement instead [try http://www.rsyslog.com/e/2307 ]</span></div></pre></td></tr></table></figure>
+<p>   因此，我们需要定位宿主机H上相同时间段，并查看在此时间段内出现和什么故障或报出了什么错误。</p>
+<p>   我们在H上的message日志文件中发现了同时段报出的错误日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Mar  7 13:38:04 H kernel: EPT: Misconfiguration.</div><div class="line">Mar  7 13:38:04 H kernel: EPT: GPA: 0x108ba4538</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x84c236107 level 4</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x10515c7107 level 3</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0xde4657107 level 2</div><div class="line">Mar  7 13:38:04 H kernel: ept_misconfig_inspect_spte: spte 0x1028125d77 level 1</div></pre></td></tr></table></figure>
+<p>   其中关键字段和术语：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPT</td>
+<td>Extended Page Table</td>
+</tr>
+<tr>
+<td>GPA</td>
+<td>Guest Physical address</td>
+</tr>
+</tbody>
+</table>
+<p>​    可以看出此错误和KVM虚拟化有关。</p>
+<p>​    进一步查看当时的zstack-agent日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-03-07 13:38:04,415 DEBUG [vm_plugin] ignore event[Suspended] of the vm[uuid:2c521dfe81b44151b25ff8e4b852fa4e]</div><div class="line">2017-03-07 15:45:08,554 DEBUG [vm_plugin] ignore event[Stopped] <span class="keyword">for</span> the vm[uuid:2c521dfe81b44151b25ff8e4b852fa4e], this operation is from ZStack itself</div></pre></td></tr></table></figure>
+<p>   发现有虚拟机挂起！</p>
+<ol>
+<li>综上，可以断定是由于虚拟机挂起导致的问题。那么为什么会挂起呢？我们借助google可以查找关键字</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kernel: EPT: Misconfiguration.</div></pre></td></tr></table></figure>
+<p>可以找到相关的条目，其中有RedHat 知识库中的条目：</p>
+<p><a href="https://access.redhat.com/solutions/1758133" target="_blank" rel="external">https://access.redhat.com/solutions/1758133</a></p>
+<p>此问题是一个Bug，RedHat知识库描述如下：</p>
+<blockquote>
+<p>Root Cause</p>
+<p>A MMIO Page Fault related bug in KVM causes this. This is a Hypervisor side bug and any VM OS might hit it.</p>
+<p>The probability of hitting it appears to be quite low (many VMs running for days).</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">MMIO</td>
+<td style="text-align:left">Memory-mapped I/O</td>
+</tr>
+</tbody>
+</table>
+<p> 这不是一个常见的错误，RedHat 建议升级内核解决这个Bug：</p>
+<blockquote>
+<p>Resolution</p>
+<ul>
+<li>RHEL 7.3: Upgrade to <code>kernel-3.10.0-514.el7</code> from <a href="https://rhn.redhat.com/errata/RHSA-2016-2574.html" target="_blank" rel="external">Errata RHSA-2016:2574</a> or later</li>
+<li>RHEL 7.2.z: Upgrade to <code>kernel-3.10.0-327.3.1.el7</code> from <a href="https://rhn.redhat.com/errata/RHSA-2015-2552.html" target="_blank" rel="external">Errata RHSA-2015:2552</a> or later</li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -397,9 +479,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/ceph/" rel="tag"># ceph</a>
+            <a href="/tags/kvm/" rel="tag"># kvm</a>
           
         </div>
       
@@ -408,8 +488,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/09/在CentOS7-VPS-上通过Docker-配置科学上网/" rel="next" title="在CentOS7 VPS 上通过Docker 配置科学上网">
-                <i class="fa fa-chevron-left"></i> 在CentOS7 VPS 上通过Docker 配置科学上网
+              <a href="/2017/01/12/Python-librbd-创建RBD-image的三种方式/" rel="next" title="Python librbd 创建RBD image的三种方式">
+                <i class="fa fa-chevron-left"></i> Python librbd 创建RBD image的三种方式
               </a>
             
           </div>
@@ -417,10 +497,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/13/虚拟机故障定位过程/" rel="prev" title="虚拟机故障定位过程">
-                虚拟机故障定位过程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -446,8 +522,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/12/Python-librbd-创建RBD-image的三种方式/"
-           data-title="Python librbd 创建RBD image的三种方式" data-url="http://blog.kissingwolf.com/2017/01/12/Python-librbd-创建RBD-image的三种方式/">
+      <div class="ds-thread" data-thread-key="2017/03/13/虚拟机故障定位过程/"
+           data-title="虚拟机故障定位过程" data-url="http://blog.kissingwolf.com/2017/03/13/虚拟机故障定位过程/">
       </div>
     
   </div>
@@ -471,17 +547,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400"
@@ -585,22 +652,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装python-ceph库"><span class="nav-number">1.</span> <span class="nav-text">安装python-ceph库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Image"><span class="nav-number">2.</span> <span class="nav-text">创建 Image</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单流程"><span class="nav-number">2.1.</span> <span class="nav-text">简单流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Finally-方式"><span class="nav-number">2.2.</span> <span class="nav-text">Try-Finally 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#With-As-方式"><span class="nav-number">2.3.</span> <span class="nav-text">With-As 方式</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
