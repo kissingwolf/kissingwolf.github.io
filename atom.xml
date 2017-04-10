@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2017-03-13T02:47:51.000Z</updated>
+  <updated>2017-04-10T08:56:50.000Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ethtool 软件包定制</title>
+    <link href="http://blog.kissingwolf.com/2017/04/10/ethtool-%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%9A%E5%88%B6/"/>
+    <id>http://blog.kissingwolf.com/2017/04/10/ethtool-软件包定制/</id>
+    <published>2017-04-10T08:55:33.000Z</published>
+    <updated>2017-04-10T08:56:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于CentOS 6 默认自带的ethtool工具版本为3.8 ，不支持intel 万兆光纤卡的光纤衰减显示，所有需要定制新版本的ethtool工具。</p>
+<ol>
+<li><p>确认安装rpm-build软件包</p>
+</li>
+<li><p>本地创建rpmbuild所需目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># mkdir -p ~/rpmbuild/&#123;BUILD,RPMS,SOURCES,SPECS,SRPMS&#125;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在~/rpmbuild/SPECS目录下创建spec文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># vim ~/rpmbuild/SPECS/ethtool.spec</span></div><div class="line"></div><div class="line">Name:		ethtool</div><div class="line">Epoch:		3</div><div class="line">Version:	4.10</div><div class="line">Release:	1%&#123;?dist&#125;</div><div class="line">Summary:	Settings tool <span class="keyword">for</span> Ethernet NICs</div><div class="line"></div><div class="line">License:	GPLv2</div><div class="line">Group:		Applications/System</div><div class="line">URL:		http://ftp.kernel.org/pub/software/network/%&#123;name&#125;/</div><div class="line"></div><div class="line"><span class="comment"># Source0 指定ethtool源代码文件下载路径</span></div><div class="line">Source0:	https://www.kernel.org/pub/software/network/ethtool/ethtool-4.10.tar.xz</div><div class="line">BuildRequires:	automake, autoconf</div><div class="line"><span class="comment">#Conflicts:      filesystem &lt; 3</span></div><div class="line"></div><div class="line">%description</div><div class="line">This utility allows querying and changing settings such as speed,</div><div class="line">port, auto-negotiation, PCI locations and checksum offload on many</div><div class="line">network devices, especially of Ethernet devices.</div><div class="line"></div><div class="line">%prep</div><div class="line">%setup -q -n %&#123;name&#125;-%&#123;version&#125;%&#123;?pre&#125;</div><div class="line"></div><div class="line">%build</div><div class="line">%configure --sbindir=/sbin</div><div class="line">make %&#123;?_smp_mflags&#125;</div><div class="line"></div><div class="line">%install</div><div class="line">rm -rf %&#123;buildroot&#125;</div><div class="line">make DESTDIR=%&#123;buildroot&#125; INSTALL=<span class="string">'install -p'</span> install</div><div class="line"></div><div class="line"><span class="comment"># Some legacy support for scripts etc. out there</span></div><div class="line">mkdir -p %&#123;buildroot&#125;%&#123;_sbindir&#125;</div><div class="line">ln -sf ../../sbin/%&#123;name&#125; %&#123;buildroot&#125;%&#123;_sbindir&#125;/%&#123;name&#125;</div><div class="line"></div><div class="line">%clean</div><div class="line">rm -rf %&#123;buildroot&#125;</div><div class="line"></div><div class="line">%files</div><div class="line">%defattr(-,root,root,-)</div><div class="line">%doc AUTHORS ChangeLog* COPYING LICENSE NEWS README</div><div class="line">/sbin/%&#123;name&#125;</div><div class="line">%&#123;_sbindir&#125;/%&#123;name&#125;</div><div class="line">%&#123;_mandir&#125;/man8/%&#123;name&#125;.8*</div></pre></td></tr></table></figure>
+</li>
+<li><p>编译创建ethtool rpm包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># rpmbuild -ba ~/rpmbuild/SPECS/ethtool.spec</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>编译好的ethtool rpm文件在<code>~/rpmbuild/RPMS/</code>目录下。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于CentOS 6 默认自带的ethtool工具版本为3.8 ，不支持intel 万兆光纤卡的光纤衰减显示，所有需要定制新版本的ethtool工具。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;确认安装rpm-build软件包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;本地创建rpmbuil
+    
+    </summary>
+    
+    
+      <category term="system,rpm" scheme="http://blog.kissingwolf.com/tags/system-rpm/"/>
+    
+  </entry>
   
   <entry>
     <title>虚拟机故障定位过程</title>
