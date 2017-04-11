@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2017-04-10T08:56:50.000Z</updated>
+  <updated>2017-04-11T15:01:41.000Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 系统使用规范</title>
+    <link href="http://blog.kissingwolf.com/2017/04/11/Linux-%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E8%A7%84%E8%8C%83/"/>
+    <id>http://blog.kissingwolf.com/2017/04/11/Linux-系统使用规范/</id>
+    <published>2017-04-11T14:58:22.000Z</published>
+    <updated>2017-04-11T15:01:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p><strong>不要修改系统级配置文件，请添加自定义配置文件到系统级配置目录中。</strong></p>
+<p>例如：一般在配置文件的同级目录下都会有一个<code>配置文件名.d</code>的配置目录，它们是为了防止多用户多服务环境配置冲突问题。</p>
+<p>​       proc 内核参数配置，不要直接修改配置文件<code>/etc/sysctl.conf</code>，应该以业务或服务名命名配置文件（如 <code>99-app-sysctl.conf</code>)，然后将其放入/etc/sysctl.d目录。</p>
+<p>​       同理配置ulimit也一样 ,  请不要修改<code>/etc/security/limits.conf</code> 配置文件，而是应该以业务或服务名命名配置文件（如 <code>99-app-limits.conf</code>)，然后将其放入<code>/etc/security/limits.d/</code>目录。</p>
+<p>​       同理配置全局Shell的环境变量，请不要修改/etc/profile或/etc/bashrc文件，而是应该以业务或单独命名配置文件（如eleme.sh),然后将其放置在/etc/profile.d目录。</p>
+</li>
+<li><p><strong>最小范围定义环境变量 (Less better than more !)</strong></p>
+<p>例如：程序启动需要的环境变量，写在程序启动脚本里。</p>
+<p>​            用户需要的环境变量，写在用户的<code>~/.bashrc</code>里。</p>
+<p>​            需要多个程序公用的环境变量，写在独立的文件中，然后使用<code>source</code>命令带入程序启动脚本里。</p>
+<p>​        如果变量不可变，请用<code>readonly</code>修饰它。</p>
+<p>​            如果变量需要子进程或子shell继承，请用<code>export</code>修饰它。</p>
+</li>
+<li><p><strong>cp 命令好过mv命令，mv命令好过rm命令。</strong></p>
+<p>例如：如果需要把文件放在新的位置，请先确认是否需要删除原有文件，如果不需要删除，请使用cp命令。如果需要删除原有文件，将其使用mv改名为<code>filename.bak-$(date %F-%T)</code>。目前的系统磁盘远远大于我们需要的空间量，保存一个文件的原始位置备份，有助于我们快速恢复。</p>
+</li>
+<li><p><strong>创建计划任务时（cron），请为你的计划任务设置优先级（nice）。</strong></p>
+<p>例如：计划任务均为后台执行程序，运行过程中会与其他运行任务争抢资源，如果你不想由于执行计划任务导致此设备上的其他任务运行缓慢，请在命令前加上<code>nice -n 10</code>，没有其他任务运行时它运行飞快，有其他任务运行时它会让出资源。</p>
+</li>
+<li><p><strong>创建计划任务时（cron），请注意命令路径问题，请使用全路径运行程序。</strong></p>
+<p>例如：<code>crontab -e -u USERNAME</code>时，默认没有环境变量设置，请自定义PATH等变量​</p>
+</li>
+<li><p><strong>当你程序打不开、写不了、无法创建文件和目录时，请检查其父目录权限。</strong></p>
+<p>例如： <code>/var/log</code>目录权限<code>root.root 755</code>，你要想让你的程序写日志进去，请自行创建<code>/var/log/程序名</code>目录，保证运行程序的用户有写入的权限。</p>
+</li>
+<li><p><strong>命令敲完回车前请确认输入是否正确，命令执行完请确认命令回显。</strong></p>
+<p>例如：如果你的网络设置命令执行错误，直接会导致网络断开，你会被堡垒机踢出或冻结输入框。这时应该第一时间联系基础运维，他们还有IPMI控制卡连接方式帮你救回来。</p>
+</li>
+<li><p><strong>文件名和目录区分大小写，请保持所有名称都是小写字母</strong></p>
+</li>
+<li><p><strong>清空日志文件的正确方法是<code>&gt;./logfile.log</code>，而不是<code>rm -rf ./logfile.log</code></strong></p>
+<p>​</p>
+<p>​</p>
+</li>
+</ol>
+<p>   ​</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;不要修改系统级配置文件，请添加自定义配置文件到系统级配置目录中。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;例如：一般在配置文件的同级目录下都会有一个&lt;code&gt;配置文件名.d&lt;/code&gt;的配置目录，它们是为了防止多用户多服务环境配置冲突问题。&lt;/
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.kissingwolf.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>ethtool 软件包定制</title>

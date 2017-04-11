@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -86,34 +86,25 @@
 
 
 
-<meta name="description" content="姓名:  邹凯                                    
-出生年月: 1979 年6月 
-学历:  大学本科(理学学士)        
-专业: 计算机教育及应用科学
-个人电子邮箱: kissingwolf@gmail.com
- 个人简介：
- 本人自1995年开始使用Linux 系统，2003年通过RedHat 系统工程师认证，2015年通过RedHat 架构师认证，">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://blog.kissingwolf.com/about/index.html">
+<meta name="description" content="不要修改系统级配置文件，请添加自定义配置文件到系统级配置目录中。
+例如：一般在配置文件的同级目录下都会有一个配置文件名.d的配置目录，它们是为了防止多用户多服务环境配置冲突问题。
+​       proc 内核参数配置，不要直接修改配置文件/etc/sysctl.conf，应该以业务或服务名命名配置文件（如 99-app-sysctl.conf)，然后将其放入/etc/sysctl.d目录。
+​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 系统使用规范">
+<meta property="og:url" content="http://blog.kissingwolf.com/2017/04/11/Linux-系统使用规范/index.html">
 <meta property="og:site_name" content="Kissingwolf's Blog">
-<meta property="og:description" content="姓名:  邹凯                                    
-出生年月: 1979 年6月 
-学历:  大学本科(理学学士)        
-专业: 计算机教育及应用科学
-个人电子邮箱: kissingwolf@gmail.com
- 个人简介：
- 本人自1995年开始使用Linux 系统，2003年通过RedHat 系统工程师认证，2015年通过RedHat 架构师认证，">
-<meta property="og:updated_time" content="2017-01-11T07:15:49.000Z">
+<meta property="og:description" content="不要修改系统级配置文件，请添加自定义配置文件到系统级配置目录中。
+例如：一般在配置文件的同级目录下都会有一个配置文件名.d的配置目录，它们是为了防止多用户多服务环境配置冲突问题。
+​       proc 内核参数配置，不要直接修改配置文件/etc/sysctl.conf，应该以业务或服务名命名配置文件（如 99-app-sysctl.conf)，然后将其放入/etc/sysctl.d目录。
+​">
+<meta property="og:updated_time" content="2017-04-11T15:01:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="姓名:  邹凯                                    
-出生年月: 1979 年6月 
-学历:  大学本科(理学学士)        
-专业: 计算机教育及应用科学
-个人电子邮箱: kissingwolf@gmail.com
- 个人简介：
- 本人自1995年开始使用Linux 系统，2003年通过RedHat 系统工程师认证，2015年通过RedHat 架构师认证，">
+<meta name="twitter:title" content="Linux 系统使用规范">
+<meta name="twitter:description" content="不要修改系统级配置文件，请添加自定义配置文件到系统级配置目录中。
+例如：一般在配置文件的同级目录下都会有一个配置文件名.d的配置目录，它们是为了防止多用户多服务环境配置冲突问题。
+​       proc 内核参数配置，不要直接修改配置文件/etc/sysctl.conf，应该以业务或服务名命名配置文件（如 99-app-sysctl.conf)，然后将其放入/etc/sysctl.d目录。
+​">
 
 
 
@@ -141,19 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.kissingwolf.com/about/"/>
+  <link rel="canonical" href="http://blog.kissingwolf.com/2017/04/11/Linux-系统使用规范/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    about | Kissingwolf's Blog
-  
-</title>
+  <title> Linux 系统使用规范 | Kissingwolf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -183,7 +168,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -294,106 +279,188 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h2 class="post-title" itemprop="name headline">about</h2>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.kissingwolf.com/2017/04/11/Linux-系统使用规范/">
 
-</header>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Kevin Zou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/7866894?v=3&u=9eef3eb744c6f9f1767f02c2c490d607be9cc6eb&s=400">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Kissingwolf's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Kissingwolf's Blog" src="">
+    </span>
+  </span>
 
     
-    
-      <p>姓名:  邹凯                                    </p>
-<p>出生年月: 1979 年6月 </p>
-<p>学历:  大学本科(理学学士)        </p>
-<p>专业: 计算机教育及应用科学</p>
-<p>个人电子邮箱: <a href="mailto:kissingwolf@gmail.com" target="_blank" rel="external">kissingwolf@gmail.com</a></p>
-<p> <strong>个人简介：</strong></p>
-<p> 本人自1995年开始使用Linux 系统，2003年通过RedHat 系统工程师认证，2015年通过RedHat 架构师认证，从事Linux 系统相关工作15年以上。自2010年开始参与RedHat OpenStack相关合作伙伴项目实施，2015年开始参与RedHat OpenShift 相关合作伙伴项目实施，并成为RedHat 首位OpenShift 认证专家和混合云管理认证专家。对Linux 系统有较深入的认识和技术实践，对互联网技术及Web应用分层有较深入的理解，对Web 缓冲、代理、高可用和负载均衡技术有较多的技术实践，在自动化运维、精益技术、CI/CD方面有实践经验，在尚观公司管理的30人技术团队中推广了“看板方法”，提高了整个团队的工作效率。对Docker 和Kubernetes 技术有深入的研究，并编写了相关技术文档放在Github上。</p>
-<p><strong>所持证书：</strong></p>
-<ul>
-<li>红帽认证虚拟化系统工程师（Red HatCertified Virtualization Administrator） </li>
-<li>红帽认证OpenShift PaaS专家（Red Hat Certificate of Expertise inPlatform-as-a-Service）</li>
-<li>红帽认证OpenStack系统工程师（Red Hat Certified System Administrator in Red HatOpenStack）</li>
-<li>红帽认证混合云管理专家（Red HatCertificate of Expertise in Hybrid Cloud Management）</li>
-<li>红帽认证混合云存储专家（Red HatCertificate of Expertise in Hybrid Cloud Storage）</li>
-<li>甲骨文认证数据库专家（OCP DBA）</li>
-<li>红帽认证系统架构师（RHCA）</li>
-<li>红帽认证系统工程师（RHCE）</li>
-<li>微软认证系统工程师（MCSE）</li>
-<li>微软认证数据库管理员（MCDBA）</li>
-<li>上海高等教育教师资格证</li>
-</ul>
-<p>RedHat 相关认证查询链接：</p>
-<p><a href="undefined">https://www.redhat.com/rhtapps/certification/verify/?certId=111-020-269</a></p>
-<p>Docker 相关文档维护链接：</p>
-<p><a href="https://github.com/kissingwolf/docker-basic" target="_blank" rel="external">https://github.com/kissingwolf/docker-basic</a></p>
-<p>Kubernetes 相关文档维护链接：</p>
-<p><a href="https://github.com/kissingwolf/kubernetes-basic" target="_blank" rel="external">https://github.com/kissingwolf/kubernetes-basic</a></p>
-<p><strong>工作经历：</strong></p>
-<p>2007.4—今    上海尚观信息技术有限公司</p>
-<p>上海尚观信息技术公司技术合伙人，首席架构师。主要负责公司主网及视频网站日常运维管理、企业项目需求分析与合作洽谈、合作伙伴技术支持和红帽公司（RedHat）第三方技术支持等。</p>
-<p>主要业绩：</p>
-<ul>
-<li><p>完成与红帽（RedHat）混合云相关技术整合，包括OpenStack、OpenShift、Docker、Kubernetes、Ceph及CloudForms等技术部署和第三方技术支持。</p>
-</li>
-<li><p>参与完成上海地铁总公司“地铁监控集群项目”搭建及日常巡检。</p>
-</li>
-<li><p>参与完成上海期货交易所“客户下单快速响应集群项目”搭建及日常巡检</p>
-</li>
-<li><p>完成对江苏邮政混合云技术支持和培训，包含OpenStack、Docker、KVM、Ceph等技术方面。</p>
-</li>
-<li><p>完成对包括阿里巴巴集团旗下支付宝、淘宝、阿里云等公司自动化运维与高可用性系统技术合作和培训，包括Puppet、Python、ShellScript等方面，并保持长期的技术合作关系。</p>
-</li>
-<li><p>与云络网络科技有限公司在虚拟化技术Xen和KVM实践方面长期保持技术合作关系。</p>
-</li>
-<li><p>与叠拓科技有限公司成都分公司在IT外包领域长期保持技术和人力资源外部合作关系。</p>
-</li>
-<li><p>完成对“我赢职场www.wyzc.com”教学视频综合网站的后台服务架构设置，应用Docker化环境将视频综合平台推广到全国70多个高校。</p>
-</li>
-<li><p>完成对尚观课程的整合和细化，每年全国尚观共9个分公司共培养Linux技术开发及运维相关人员7000余人</p>
-</li>
-<li><p>完成对尚观员工的培训和整合，尚观全国共开设9家培训分支机构300余人，包括北京、上海、深圳、广州、成都、南京、武汉、大连、沈阳。</p>
-</li>
-<li><p>日常对合作伙伴及学生就职公司的技术支持，合作伙伴及学生就职公司包括：谷歌、雅虎中国、新浪、网易、土豆网、优酷、好耶、支付宝、淘宝网、智联招聘、万网科技、火速科技、盛大科技、光通科技、七牛云、驻云科技等等</p>
-</li>
-<li><p>作为技术顾问参与凌云互动有限公司对大旗网架构维护和更新</p>
-</li>
-</ul>
-<p>2004.9—2007.4 掘乐信息技术(上海)有限公司 ( 国际风险投资集团IDG投资 )</p>
-<p>系统运维部经理(兼任数动时代科技有限公司和凌云互动有限公司技术顾问)，负责规划和设计公司网络服务架构和安全规划. </p>
-<p>​主要业绩: </p>
-<ul>
-<li><p>完成基于RedHat Cluster Suite集群组件和RedHat GFS2集群文件系统的Web高可用性集群。</p>
-</li>
-<li><p>完成基于LVS结合Squid反向代理的负载均衡集群。 </p>
-</li>
-<li><p>完成基于ORACLE 高级复制和RAC的南北网及教育网的三网数据库高可用性同步复用分布式集群。 </p>
-</li>
-<li><p>合作投标中华网 blog项目, 负责高可用高负载下的网络架构设计，最终中标并指导实施。</p>
-</li>
-<li><p>监控维护<a href="http://www.daqi.com/" target="_blank" rel="external">www.daqi.com</a>网站，持续稳定高效运行两年，期间无超过5分钟以上宕机及无法访问事故出现。</p>
-</li>
-<li><p>负责组织编写应用服务器应用服务数据自动冗灾备份恢复脚本(使用rsync方式本地备份和异地机房二级备份)； </p>
-</li>
-<li><p>负责搭建配置公司网站服务器，达到各地多台服务器按地域不同负载均衡访问(网站是基于apache整合tomcat集群的动态页面，并在其前使用Squid作反向代理，负载均衡基于Bind9 View 和Round Robin和 tomcat JK1.2 )； </p>
-</li>
-<li><p>负责制定公司服务器安全策略并保证应用及网站服务器的7x24不间断高可用运行(多个应用服务使用Linux-HA方式)。 </p>
-</li>
-<li><p>主要负责7x24网站：<a href="http://www.chinabbs.com/" target="_blank" rel="external">www.chinabbs.com</a>(<a href="http://www.daqi.com" target="_blank" rel="external">www.daqi.com</a>)； <a href="http://www.chinay.com/" target="_blank" rel="external">www.chinay.com</a> ； <a href="http://www.imu.com.cn/" target="_blank" rel="external">www.imu.com.cn</a> 等</p>
-</li>
-<li><p>主要负责7x24服务：IMU即时通讯服务(现同时在线峰值20万人)；IMU 网站伴侣服务(合作伙伴包括广东联通在内300多家)；ChinaBBS 中国论坛搜索系统(后更名为大旗网)；ChinaY 中国blog竞赛系统。 </p>
-</li>
-<li><p>负责与中国电信共同测试IMU电信级可用性，在一个月的时间里与中国电信广州电信研究所共同制定实施1000万用户同时分局在线模拟测试，并最后完成完全测试报告。 </p>
-</li>
-<li><p>协助信语通科技公司(国际风险投资集团IDG投资，数动时代子公司)，兼任Linux应用服务及相关技术高级顾问。 组织5人小组在2个月的时间在开源项目的基础上开发了基于Linux的校园汇视频播放系统，并提供了连续3年的技术支持和程序更新。</p>
-</li>
-</ul>
-<p>2002年8月～2004年5月 上海神州文华教育管理有限公司</p>
-<p>Linux系统课程教研组组长，主要负责公司Linux相关课程设计和实施 ，合作伙伴技术支持</p>
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux 系统使用规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-11T22:58:22+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/04/11/Linux-系统使用规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/Linux-系统使用规范/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li><p><strong>不要修改系统级配置文件，请添加自定义配置文件到系统级配置目录中。</strong></p>
+<p>例如：一般在配置文件的同级目录下都会有一个<code>配置文件名.d</code>的配置目录，它们是为了防止多用户多服务环境配置冲突问题。</p>
+<p>​       proc 内核参数配置，不要直接修改配置文件<code>/etc/sysctl.conf</code>，应该以业务或服务名命名配置文件（如 <code>99-app-sysctl.conf</code>)，然后将其放入/etc/sysctl.d目录。</p>
+<p>​       同理配置ulimit也一样 ,  请不要修改<code>/etc/security/limits.conf</code> 配置文件，而是应该以业务或服务名命名配置文件（如 <code>99-app-limits.conf</code>)，然后将其放入<code>/etc/security/limits.d/</code>目录。</p>
+<p>​       同理配置全局Shell的环境变量，请不要修改/etc/profile或/etc/bashrc文件，而是应该以业务或单独命名配置文件（如eleme.sh),然后将其放置在/etc/profile.d目录。</p>
+</li>
+<li><p><strong>最小范围定义环境变量 (Less better than more !)</strong></p>
+<p>例如：程序启动需要的环境变量，写在程序启动脚本里。</p>
+<p>​            用户需要的环境变量，写在用户的<code>~/.bashrc</code>里。</p>
+<p>​            需要多个程序公用的环境变量，写在独立的文件中，然后使用<code>source</code>命令带入程序启动脚本里。</p>
+<p>​        如果变量不可变，请用<code>readonly</code>修饰它。</p>
+<p>​            如果变量需要子进程或子shell继承，请用<code>export</code>修饰它。</p>
+</li>
+<li><p><strong>cp 命令好过mv命令，mv命令好过rm命令。</strong></p>
+<p>例如：如果需要把文件放在新的位置，请先确认是否需要删除原有文件，如果不需要删除，请使用cp命令。如果需要删除原有文件，将其使用mv改名为<code>filename.bak-$(date %F-%T)</code>。目前的系统磁盘远远大于我们需要的空间量，保存一个文件的原始位置备份，有助于我们快速恢复。</p>
+</li>
+<li><p><strong>创建计划任务时（cron），请为你的计划任务设置优先级（nice）。</strong></p>
+<p>例如：计划任务均为后台执行程序，运行过程中会与其他运行任务争抢资源，如果你不想由于执行计划任务导致此设备上的其他任务运行缓慢，请在命令前加上<code>nice -n 10</code>，没有其他任务运行时它运行飞快，有其他任务运行时它会让出资源。</p>
+</li>
+<li><p><strong>创建计划任务时（cron），请注意命令路径问题，请使用全路径运行程序。</strong></p>
+<p>例如：<code>crontab -e -u USERNAME</code>时，默认没有环境变量设置，请自定义PATH等变量​</p>
+</li>
+<li><p><strong>当你程序打不开、写不了、无法创建文件和目录时，请检查其父目录权限。</strong></p>
+<p>例如： <code>/var/log</code>目录权限<code>root.root 755</code>，你要想让你的程序写日志进去，请自行创建<code>/var/log/程序名</code>目录，保证运行程序的用户有写入的权限。</p>
+</li>
+<li><p><strong>命令敲完回车前请确认输入是否正确，命令执行完请确认命令回显。</strong></p>
+<p>例如：如果你的网络设置命令执行错误，直接会导致网络断开，你会被堡垒机踢出或冻结输入框。这时应该第一时间联系基础运维，他们还有IPMI控制卡连接方式帮你救回来。</p>
+</li>
+<li><p><strong>文件名和目录区分大小写，请保持所有名称都是小写字母</strong></p>
+</li>
+<li><p><strong>清空日志文件的正确方法是<code>&gt;./logfile.log</code>，而不是<code>rm -rf ./logfile.log</code></strong></p>
+<p>​</p>
+<p>​</p>
+</li>
+</ol>
+<p>   ​</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/10/ethtool-软件包定制/" rel="next" title="ethtool 软件包定制">
+                <i class="fa fa-chevron-left"></i> ethtool 软件包定制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -404,8 +471,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="about/index.html"
-           data-title="about" data-url="http://blog.kissingwolf.com/about/index.html">
+      <div class="ds-thread" data-thread-key="2017/04/11/Linux-系统使用规范/"
+           data-title="Linux 系统使用规范" data-url="http://blog.kissingwolf.com/2017/04/11/Linux-系统使用规范/">
       </div>
     
   </div>
@@ -632,6 +699,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
