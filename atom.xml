@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2017-09-09T05:12:29.000Z</updated>
+  <updated>2017-09-09T05:15:19.000Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://blog.kissingwolf.com/2017/09/09/Docker-%E6%95%85%E9%9A%9C%EF%BC%88device-or-resource-busy%EF%BC%89/"/>
     <id>http://blog.kissingwolf.com/2017/09/09/Docker-故障（device-or-resource-busy）/</id>
     <published>2017-09-09T05:10:41.000Z</published>
-    <updated>2017-09-09T05:12:29.000Z</updated>
+    <updated>2017-09-09T05:15:19.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="2017-09-05-AppOS-Docker重启故障（device-or-resource-busy）"><a href="#2017-09-05-AppOS-Docker重启故障（device-or-resource-busy）" class="headerlink" title="2017-09-05 AppOS Docker重启故障（device or resource busy）"></a>2017-09-05 AppOS Docker重启故障（device or resource busy）</h1><h2 id="故障原因"><a href="#故障原因" class="headerlink" title="故障原因"></a>故障原因</h2><ol>
+    <content type="html"><![CDATA[<h2 id="故障原因"><a href="#故障原因" class="headerlink" title="故障原因"></a>故障原因</h2><ol>
 <li>CentOS/RedHat 3.10.0内核NameSpace bug，由于Systemd PrivateTmp设置导致私有名字空间维护挂接磁盘状态影响全局空间卸载磁盘。</li>
 <li>基于systemd 方式的ntpd 服务启动配置文件中设置“PrivateTmp=true”，导致ntpd 私有名字空间中挂接信息（/proc/$ntpd_pid/mounts）存在docker container 挂接磁盘信息，Docker 销毁container时需要卸载挂接磁盘，此时出现冲突导致docker 销毁container动作失败。</li>
 <li>Docker 创建、运行、新增container和image时不会遇到这个Bug，仅在销毁container时由于无法卸载挂接镜像磁盘导致出错。</li>
@@ -76,7 +76,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;2017-09-05-AppOS-Docker重启故障（device-or-resource-busy）&quot;&gt;&lt;a href=&quot;#2017-09-05-AppOS-Docker重启故障（device-or-resource-busy）&quot; class=&quot;headerl
+      &lt;h2 id=&quot;故障原因&quot;&gt;&lt;a href=&quot;#故障原因&quot; class=&quot;headerlink&quot; title=&quot;故障原因&quot;&gt;&lt;/a&gt;故障原因&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;CentOS/RedHat 3.10.0内核NameSpace bug，由于Systemd PrivateTmp
     
     </summary>
     
