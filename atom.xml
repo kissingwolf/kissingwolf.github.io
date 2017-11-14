@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.kissingwolf.com/"/>
-  <updated>2017-09-09T05:15:19.000Z</updated>
+  <updated>2017-11-14T07:14:20.129Z</updated>
   <id>http://blog.kissingwolf.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RHEL/CentOS 7 由于数据磁盘故障挂接失败导致系统重启进入Rescue模式解决方案</title>
+    <link href="http://blog.kissingwolf.com/2017/11/14/RHEL-CentOS-7-%E7%94%B1%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%A3%81%E7%9B%98%E6%95%85%E9%9A%9C%E6%8C%82%E6%8E%A5%E5%A4%B1%E8%B4%A5%E5%AF%BC%E8%87%B4%E7%B3%BB%E7%BB%9F%E9%87%8D%E5%90%AF%E8%BF%9B%E5%85%A5Rescue%E6%A8%A1%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://blog.kissingwolf.com/2017/11/14/RHEL-CentOS-7-由于数据磁盘故障挂接失败导致系统重启进入Rescue模式解决方案/</id>
+    <published>2017-11-14T06:56:40.000Z</published>
+    <updated>2017-11-14T07:14:20.129Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果一个存储设备配置在<code>/etc/fstab</code>文件中配置为启动时挂载，而启动时却无法找到此设备，会导致RHEL/CentOS 7 不能正常启动，系统将进入Rescue模式，需要人工修改<code>/etc/fstab</code>文件剔除故障挂接点。这是一个RedHat故意改变的行为，其目的是防止系统启动不重要的存储设备。早期的RHEL/CentOS版本则没有这个问题。</p>
+<p>对于我厂大量的ES、Ceph和Hadoop的机器，使用12块磁盘以直连方式挂接，就会由于单个数据磁盘更替导致系统重启失败。</p>
+<p>为解决这个问题，查询RedHat文档，找到了解决方案。<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/migration_planning_guide/sect-red_hat_enterprise_linux-migration_planning_guide-physical_storage" target="_blank" rel="external">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/migration_planning_guide/sect-red_hat_enterprise_linux-migration_planning_guide-physical_storage</a> </p>
+<p>如果磁盘设备并不是显得十分重要，启动的时候如果发现其故障，可以通过在<code>/etc/fstab</code>文件中添加<code>nofail</code>操作参数忽略对其的挂接。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/dev/mapper/centos-root /                       xfs     defaults        0 0</div><div class="line">UUID=21cee289-8804-4914-8a5a-de2d6033a5e7 /boot                   xfs     defaults        0 0</div><div class="line">/dev/mapper/centos-swap swap                    swap    defaults        0 0</div><div class="line">/dev/sdb1 	/opt	ext4 defaults,nofail 0 0</div></pre></td></tr></table></figure>
+<p>例如上面的测试机，<code>/dev/sdb1</code>为非关键磁盘设备，在<code>defaults</code>后加上<code>nofail</code>，就可以解决在<code>/dev/sdb1</code>或<code>/dev/sdb</code>设备故障或文件系统故障时重启导致的无法正常启动问题。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如果一个存储设备配置在&lt;code&gt;/etc/fstab&lt;/code&gt;文件中配置为启动时挂载，而启动时却无法找到此设备，会导致RHEL/CentOS 7 不能正常启动，系统将进入Rescue模式，需要人工修改&lt;code&gt;/etc/fstab&lt;/code&gt;文件剔除故障挂接点。这
+    
+    </summary>
+    
+    
+      <category term="CentOS7" scheme="http://blog.kissingwolf.com/tags/CentOS7/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker 故障（device or resource busy）</title>
